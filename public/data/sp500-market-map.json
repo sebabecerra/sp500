@@ -1,0 +1,3654 @@
+{
+  "generatedAt": "2026-04-18T22:36:41.626Z",
+  "title": {
+    "en": "S&P 500 Market Map",
+    "es": "Mapa del S&P 500"
+  },
+  "subtitle": {
+    "en": "Static market map built from a notebook-generated CSV with Wikipedia classification and Yahoo Finance market capitalization.",
+    "es": "Mapa de mercado estático construido desde un CSV generado en notebook con clasificación de Wikipedia y capitalización de mercado de Yahoo Finance."
+  },
+  "note": {
+    "en": "This app reads a single CSV exported from the notebook pipeline. If the CSV includes company weights they are used directly; otherwise weights are recalculated from market capitalization.",
+    "es": "Esta app lee un solo CSV exportado desde el notebook. Si el CSV ya incluye pesos por compañía, se usan directo; si no, los pesos se recalculan desde la capitalización de mercado."
+  },
+  "source": {
+    "name": "Notebook CSV: sp500_companies_wiki_yfinance.csv",
+    "url": "./raw/sp500_companies_wiki_yfinance.csv"
+  },
+  "totalMarketCap": "N/A",
+  "sectors": [
+    {
+      "key": "information-technology",
+      "name": {
+        "en": "Information Technology",
+        "es": "Tecnologia"
+      },
+      "weight": 31.97,
+      "companies": 74,
+      "color": "#78b9ff",
+      "top": [
+        {
+          "name": "Nvidia",
+          "label": "NVDA",
+          "ticker": "NVDA",
+          "industry": "Semiconductors",
+          "weight": 7
+        },
+        {
+          "name": "Apple",
+          "label": "AAPL",
+          "ticker": "AAPL",
+          "industry": "Technology Hardware, Storage & Peripherals",
+          "weight": 6.3
+        },
+        {
+          "name": "Microsoft",
+          "label": "MSFT",
+          "ticker": "MSFT",
+          "industry": "Systems Software",
+          "weight": 4.6
+        },
+        {
+          "name": "Broadcom",
+          "label": "AVGO",
+          "ticker": "AVGO",
+          "industry": "Semiconductors",
+          "weight": 2.4
+        },
+        {
+          "name": "Oracle",
+          "label": "ORCL",
+          "ticker": "ORCL",
+          "industry": "Application Software",
+          "weight": 0.7
+        },
+        {
+          "name": "Micron Technology",
+          "label": "MU",
+          "ticker": "MU",
+          "industry": "Semiconductors",
+          "weight": 0.6
+        },
+        {
+          "name": "Palantir Technologies",
+          "label": "PLTR",
+          "ticker": "PLTR",
+          "industry": "Application Software",
+          "weight": 0.6
+        },
+        {
+          "name": "Advanced Micro Devices",
+          "label": "AMD",
+          "ticker": "AMD",
+          "industry": "Semiconductors",
+          "weight": 0.6
+        },
+        {
+          "name": "Cisco",
+          "label": "CSCO",
+          "ticker": "CSCO",
+          "industry": "Communications Equipment",
+          "weight": 0.5
+        },
+        {
+          "name": "Applied Materials",
+          "label": "AMAT",
+          "ticker": "AMAT",
+          "industry": "Semiconductor Materials & Equipment",
+          "weight": 0.5
+        },
+        {
+          "name": "Lam Research",
+          "label": "LRCX",
+          "ticker": "LRCX",
+          "industry": "Semiconductor Materials & Equipment",
+          "weight": 0.4
+        },
+        {
+          "name": "IBM",
+          "label": "IBM",
+          "ticker": "IBM",
+          "industry": "IT Consulting & Other Services",
+          "weight": 0.4
+        },
+        {
+          "name": "Intel",
+          "label": "INTC",
+          "ticker": "INTC",
+          "industry": "Semiconductors",
+          "weight": 0.4
+        },
+        {
+          "name": "KLA",
+          "label": "KLAC",
+          "ticker": "KLAC",
+          "industry": "Semiconductor Materials & Equipment",
+          "weight": 0.3
+        },
+        {
+          "name": "Salesforce",
+          "label": "CRM",
+          "ticker": "CRM",
+          "industry": "Application Software",
+          "weight": 0.3
+        },
+        {
+          "name": "Texas Instruments",
+          "label": "TXN",
+          "ticker": "TXN",
+          "industry": "Semiconductors",
+          "weight": 0.3
+        },
+        {
+          "name": "Analog Devices",
+          "label": "ADI",
+          "ticker": "ADI",
+          "industry": "Semiconductors",
+          "weight": 0.3
+        },
+        {
+          "name": "Amphenol",
+          "label": "APH",
+          "ticker": "APH",
+          "industry": "Electronic Components",
+          "weight": 0.3
+        },
+        {
+          "name": "Arista Networks",
+          "label": "ANET",
+          "ticker": "ANET",
+          "industry": "Communications Equipment",
+          "weight": 0.3
+        },
+        {
+          "name": "Qualcomm",
+          "label": "QCOM",
+          "ticker": "QCOM",
+          "industry": "Semiconductors",
+          "weight": 0.2
+        },
+        {
+          "name": "AppLovin",
+          "label": "APP",
+          "ticker": "APP",
+          "industry": "Application Software",
+          "weight": 0.2
+        },
+        {
+          "name": "Palo Alto Networks",
+          "label": "PANW",
+          "ticker": "PANW",
+          "industry": "Systems Software",
+          "weight": 0.2
+        },
+        {
+          "name": "Accenture",
+          "label": "ACN",
+          "ticker": "ACN",
+          "industry": "IT Consulting & Other Services",
+          "weight": 0.2
+        },
+        {
+          "name": "Intuit",
+          "label": "INTU",
+          "ticker": "INTU",
+          "industry": "Application Software",
+          "weight": 0.2
+        },
+        {
+          "name": "Corning",
+          "label": "GLW",
+          "ticker": "GLW",
+          "industry": "Electronic Components",
+          "weight": 0.2
+        },
+        {
+          "name": "ServiceNow",
+          "label": "NOW",
+          "ticker": "NOW",
+          "industry": "Systems Software",
+          "weight": 0.2
+        },
+        {
+          "name": "Dell Technologies",
+          "label": "DELL",
+          "ticker": "DELL",
+          "industry": "Technology Hardware, Storage & Peripherals",
+          "weight": 0.2
+        },
+        {
+          "name": "Adobe",
+          "label": "ADBE",
+          "ticker": "ADBE",
+          "industry": "Application Software",
+          "weight": 0.2
+        },
+        {
+          "name": "CrowdStrike",
+          "label": "CRWD",
+          "ticker": "CRWD",
+          "industry": "Systems Software",
+          "weight": 0.2
+        },
+        {
+          "name": "Western Digital",
+          "label": "WDC",
+          "ticker": "WDC",
+          "industry": "Technology Hardware, Storage & Peripherals",
+          "weight": 0.2
+        },
+        {
+          "name": "Sandisk",
+          "label": "WDC",
+          "ticker": "WDC",
+          "industry": "Technology Hardware, Storage & Peripherals",
+          "weight": 0.2
+        },
+        {
+          "name": "Seagate Technology",
+          "label": "STX",
+          "ticker": "STX",
+          "industry": "Technology Hardware, Storage & Peripherals",
+          "weight": 0.1
+        },
+        {
+          "name": "Cadence Design Systems",
+          "label": "CDNS",
+          "ticker": "CDNS",
+          "industry": "Application Software",
+          "weight": 0.1
+        },
+        {
+          "name": "Synopsys",
+          "label": "SNPS",
+          "ticker": "SNPS",
+          "industry": "Application Software",
+          "weight": 0.1
+        },
+        {
+          "name": "Motorola Solutions",
+          "label": "MSI",
+          "ticker": "MSI",
+          "industry": "Communications Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Fortinet",
+          "label": "FTNT",
+          "ticker": "FTNT",
+          "industry": "Systems Software",
+          "weight": 0.1
+        },
+        {
+          "name": "TE Connectivity",
+          "label": "TEL",
+          "ticker": "TEL",
+          "industry": "Electronic Manufacturing Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Ciena",
+          "label": "CIEN",
+          "ticker": "CIEN",
+          "industry": "Communications Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Autodesk",
+          "label": "ADSK",
+          "ticker": "ADSK",
+          "industry": "Application Software",
+          "weight": 0.1
+        },
+        {
+          "name": "Monolithic Power Systems",
+          "label": "MPWR",
+          "ticker": "MPWR",
+          "industry": "Semiconductors",
+          "weight": 0.1
+        },
+        {
+          "name": "NXP Semiconductors",
+          "label": "NXPI",
+          "ticker": "NXPI",
+          "industry": "Semiconductors",
+          "weight": 0.1
+        },
+        {
+          "name": "Lumentum Holdings",
+          "label": "LITE",
+          "ticker": "LITE",
+          "industry": "Communications Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Keysight Technologies",
+          "label": "KEYS",
+          "ticker": "KEYS",
+          "industry": "Electronic Equipment & Instruments",
+          "weight": 0.1
+        },
+        {
+          "name": "Teradyne",
+          "label": "TER",
+          "ticker": "TER",
+          "industry": "Semiconductor Materials & Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Coherent,",
+          "label": "Coherent,",
+          "ticker": "Coherent,",
+          "industry": "Other",
+          "weight": 0.1
+        },
+        {
+          "name": "Datadog",
+          "label": "DDOG",
+          "ticker": "DDOG",
+          "industry": "Application Software",
+          "weight": 0.1
+        },
+        {
+          "name": "Roper Technologies",
+          "label": "ROP",
+          "ticker": "ROP",
+          "industry": "Electronic Equipment & Instruments",
+          "weight": 0.1
+        },
+        {
+          "name": "Workday,",
+          "label": "WDAY",
+          "ticker": "WDAY",
+          "industry": "Application Software",
+          "weight": 0.1
+        },
+        {
+          "name": "Microchip Technology",
+          "label": "MCHP",
+          "ticker": "MCHP",
+          "industry": "Semiconductors",
+          "weight": 0.1
+        },
+        {
+          "name": "Hewlett Packard Enterprise",
+          "label": "HPE",
+          "ticker": "HPE",
+          "industry": "Technology Hardware, Storage & Peripherals",
+          "weight": 0.1
+        },
+        {
+          "name": "Cognizant",
+          "label": "CTSH",
+          "ticker": "CTSH",
+          "industry": "IT Consulting & Other Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Teledyne Technologies",
+          "label": "TDY",
+          "ticker": "TDY",
+          "industry": "Electronic Equipment & Instruments",
+          "weight": 0.1
+        },
+        {
+          "name": "Jabil",
+          "label": "JBL",
+          "ticker": "JBL",
+          "industry": "Electronic Manufacturing Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Fair Isaac",
+          "label": "FICO",
+          "ticker": "FICO",
+          "industry": "Application Software",
+          "weight": 0.04
+        },
+        {
+          "name": "Verisign",
+          "label": "VRSN",
+          "ticker": "VRSN",
+          "industry": "Internet Services & Infrastructure",
+          "weight": 0.04
+        },
+        {
+          "name": "Qnity Electronics",
+          "label": "Qnity Electronics",
+          "ticker": "Qnity Electronics",
+          "industry": "Other",
+          "weight": 0.04
+        },
+        {
+          "name": "ON Semiconductor",
+          "label": "ON",
+          "ticker": "ON",
+          "industry": "Semiconductors",
+          "weight": 0.04
+        },
+        {
+          "name": "NetApp",
+          "label": "NTAP",
+          "ticker": "NTAP",
+          "industry": "Technology Hardware, Storage & Peripherals",
+          "weight": 0.03
+        },
+        {
+          "name": "First Solar",
+          "label": "FSLR",
+          "ticker": "FSLR",
+          "industry": "Semiconductors",
+          "weight": 0.03
+        },
+        {
+          "name": "HP",
+          "label": "HPQ",
+          "ticker": "HPQ",
+          "industry": "Technology Hardware, Storage & Peripherals",
+          "weight": 0.03
+        },
+        {
+          "name": "PTC",
+          "label": "PTC",
+          "ticker": "PTC",
+          "industry": "Application Software",
+          "weight": 0.03
+        },
+        {
+          "name": "Akamai Technologies",
+          "label": "AKAM",
+          "ticker": "AKAM",
+          "industry": "Internet Services & Infrastructure",
+          "weight": 0.03
+        },
+        {
+          "name": "F5,",
+          "label": "FFIV",
+          "ticker": "FFIV",
+          "industry": "Communications Equipment",
+          "weight": 0.03
+        },
+        {
+          "name": "CDW",
+          "label": "CDW",
+          "ticker": "CDW",
+          "industry": "Technology Distributors",
+          "weight": 0.03
+        },
+        {
+          "name": "Trimble",
+          "label": "TRMB",
+          "ticker": "TRMB",
+          "industry": "Electronic Equipment & Instruments",
+          "weight": 0.03
+        },
+        {
+          "name": "Tyler Technologies",
+          "label": "TYL",
+          "ticker": "TYL",
+          "industry": "Application Software",
+          "weight": 0.03
+        },
+        {
+          "name": "Supermicro",
+          "label": "SMCI",
+          "ticker": "SMCI",
+          "industry": "Technology Hardware, Storage & Peripherals",
+          "weight": 0.02
+        },
+        {
+          "name": "Jack Henry & Associates",
+          "label": "JKHY",
+          "ticker": "JKHY",
+          "industry": "Transaction & Payment Processing Services",
+          "weight": 0.02
+        },
+        {
+          "name": "Gartner",
+          "label": "IT",
+          "ticker": "IT",
+          "industry": "IT Consulting & Other Services",
+          "weight": 0.02
+        },
+        {
+          "name": "Gen Digital",
+          "label": "GEN",
+          "ticker": "GEN",
+          "industry": "Systems Software",
+          "weight": 0.02
+        },
+        {
+          "name": "GoDaddy",
+          "label": "GDDY",
+          "ticker": "GDDY",
+          "industry": "Internet Services & Infrastructure",
+          "weight": 0.02
+        },
+        {
+          "name": "Zebra Technologies",
+          "label": "ZBRA",
+          "ticker": "ZBRA",
+          "industry": "Electronic Equipment & Instruments",
+          "weight": 0.02
+        },
+        {
+          "name": "Skyworks Solutions",
+          "label": "SWKS",
+          "ticker": "SWKS",
+          "industry": "Semiconductors",
+          "weight": 0.01
+        },
+        {
+          "name": "EPAM Systems",
+          "label": "EPAM",
+          "ticker": "EPAM",
+          "industry": "IT Consulting & Other Services",
+          "weight": 0.01
+        }
+      ]
+    },
+    {
+      "key": "financials",
+      "name": {
+        "en": "Financials",
+        "es": "Financieras"
+      },
+      "weight": 13.62,
+      "companies": 76,
+      "color": "#22c55e",
+      "top": [
+        {
+          "name": "Berkshire Hathaway",
+          "label": "Berkshire Hathaway",
+          "ticker": "Berkshire Hathaway",
+          "industry": "Other",
+          "weight": 1.8
+        },
+        {
+          "name": "JPMorgan Chase",
+          "label": "JPM",
+          "ticker": "JPM",
+          "industry": "Diversified Banks",
+          "weight": 1.3
+        },
+        {
+          "name": "Visa",
+          "label": "V",
+          "ticker": "V",
+          "industry": "Transaction & Payment Processing Services",
+          "weight": 1
+        },
+        {
+          "name": "Mastercard",
+          "label": "MA",
+          "ticker": "MA",
+          "industry": "Transaction & Payment Processing Services",
+          "weight": 0.8
+        },
+        {
+          "name": "Bank of America",
+          "label": "BAC",
+          "ticker": "BAC",
+          "industry": "Diversified Banks",
+          "weight": 0.6
+        },
+        {
+          "name": "Morgan Stanley",
+          "label": "MS",
+          "ticker": "MS",
+          "industry": "Investment Banking & Brokerage",
+          "weight": 0.4
+        },
+        {
+          "name": "Goldman Sachs",
+          "label": "GS",
+          "ticker": "GS",
+          "industry": "Investment Banking & Brokerage",
+          "weight": 0.4
+        },
+        {
+          "name": "Wells Fargo",
+          "label": "WFC",
+          "ticker": "WFC",
+          "industry": "Diversified Banks",
+          "weight": 0.4
+        },
+        {
+          "name": "American Express",
+          "label": "AXP",
+          "ticker": "AXP",
+          "industry": "Consumer Finance",
+          "weight": 0.4
+        },
+        {
+          "name": "Citigroup",
+          "label": "C",
+          "ticker": "C",
+          "industry": "Diversified Banks",
+          "weight": 0.3
+        },
+        {
+          "name": "Charles Schwab",
+          "label": "SCHW",
+          "ticker": "SCHW",
+          "industry": "Investment Banking & Brokerage",
+          "weight": 0.3
+        },
+        {
+          "name": "BlackRock",
+          "label": "BLK",
+          "ticker": "BLK",
+          "industry": "Asset Management & Custody Banks",
+          "weight": 0.3
+        },
+        {
+          "name": "Chubb Limited",
+          "label": "CB",
+          "ticker": "CB",
+          "industry": "Property & Casualty Insurance",
+          "weight": 0.2
+        },
+        {
+          "name": "S&P Global",
+          "label": "SPGI",
+          "ticker": "SPGI",
+          "industry": "Financial Exchanges & Data",
+          "weight": 0.2
+        },
+        {
+          "name": "Progressive",
+          "label": "PGR",
+          "ticker": "PGR",
+          "industry": "Property & Casualty Insurance",
+          "weight": 0.2
+        },
+        {
+          "name": "Capital One",
+          "label": "COF",
+          "ticker": "COF",
+          "industry": "Consumer Finance",
+          "weight": 0.2
+        },
+        {
+          "name": "CME Group",
+          "label": "CME",
+          "ticker": "CME",
+          "industry": "Financial Exchanges & Data",
+          "weight": 0.2
+        },
+        {
+          "name": "Intercontinental Exchange",
+          "label": "ICE",
+          "ticker": "ICE",
+          "industry": "Financial Exchanges & Data",
+          "weight": 0.2
+        },
+        {
+          "name": "Blackstone",
+          "label": "BX",
+          "ticker": "BX",
+          "industry": "Asset Management & Custody Banks",
+          "weight": 0.2
+        },
+        {
+          "name": "Marsh & McLennan Companies,",
+          "label": "Marsh & McLennan Companies,",
+          "ticker": "Marsh & McLennan Companies,",
+          "industry": "Other",
+          "weight": 0.2
+        },
+        {
+          "name": "PNC Financial Services",
+          "label": "PNC",
+          "ticker": "PNC",
+          "industry": "Diversified Banks",
+          "weight": 0.1
+        },
+        {
+          "name": "KKR",
+          "label": "KKR",
+          "ticker": "KKR",
+          "industry": "Other",
+          "weight": 0.1
+        },
+        {
+          "name": "BNY Mellon",
+          "label": "BK",
+          "ticker": "BK",
+          "industry": "Asset Management & Custody Banks",
+          "weight": 0.1
+        },
+        {
+          "name": "U.S. Bancorp",
+          "label": "USB",
+          "ticker": "USB",
+          "industry": "Diversified Banks",
+          "weight": 0.1
+        },
+        {
+          "name": "Moody's",
+          "label": "MCO",
+          "ticker": "MCO",
+          "industry": "Financial Exchanges & Data",
+          "weight": 0.1
+        },
+        {
+          "name": "Aon",
+          "label": "AON",
+          "ticker": "AON",
+          "industry": "Insurance Brokers",
+          "weight": 0.1
+        },
+        {
+          "name": "Apollo Global Management",
+          "label": "APO",
+          "ticker": "APO",
+          "industry": "Asset Management & Custody Banks",
+          "weight": 0.1
+        },
+        {
+          "name": "Travelers Companies",
+          "label": "TRV",
+          "ticker": "TRV",
+          "industry": "Property & Casualty Insurance",
+          "weight": 0.1
+        },
+        {
+          "name": "Robinhood Markets,",
+          "label": "HOOD",
+          "ticker": "HOOD",
+          "industry": "Investment Banking & Brokerage",
+          "weight": 0.1
+        },
+        {
+          "name": "Aflac",
+          "label": "AFL",
+          "ticker": "AFL",
+          "industry": "Life & Health Insurance",
+          "weight": 0.1
+        },
+        {
+          "name": "Arthur J. Gallagher & Co.",
+          "label": "AJG",
+          "ticker": "AJG",
+          "industry": "Insurance Brokers",
+          "weight": 0.1
+        },
+        {
+          "name": "Truist Financial",
+          "label": "TFC",
+          "ticker": "TFC",
+          "industry": "Diversified Banks",
+          "weight": 0.1
+        },
+        {
+          "name": "Allstate",
+          "label": "ALL",
+          "ticker": "ALL",
+          "industry": "Property & Casualty Insurance",
+          "weight": 0.1
+        },
+        {
+          "name": "Nasdaq,",
+          "label": "NDAQ",
+          "ticker": "NDAQ",
+          "industry": "Financial Exchanges & Data",
+          "weight": 0.1
+        },
+        {
+          "name": "MetLife",
+          "label": "MET",
+          "ticker": "MET",
+          "industry": "Life & Health Insurance",
+          "weight": 0.1
+        },
+        {
+          "name": "Coinbase Global",
+          "label": "Coinbase Global",
+          "ticker": "Coinbase Global",
+          "industry": "Other",
+          "weight": 0.1
+        },
+        {
+          "name": "PayPal",
+          "label": "PYPL",
+          "ticker": "PYPL",
+          "industry": "Transaction & Payment Processing Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Fifth Third Bancorp",
+          "label": "FITB",
+          "ticker": "FITB",
+          "industry": "Regional Banks",
+          "weight": 0.1
+        },
+        {
+          "name": "Ameriprise Financial",
+          "label": "AMP",
+          "ticker": "AMP",
+          "industry": "Asset Management & Custody Banks",
+          "weight": 0.1
+        },
+        {
+          "name": "American International Group",
+          "label": "AIG",
+          "ticker": "AIG",
+          "industry": "Multi-line Insurance",
+          "weight": 0.1
+        },
+        {
+          "name": "MSCI",
+          "label": "MSCI",
+          "ticker": "MSCI",
+          "industry": "Financial Exchanges & Data",
+          "weight": 0.1
+        },
+        {
+          "name": "Hartford",
+          "label": "HIG",
+          "ticker": "HIG",
+          "industry": "Property & Casualty Insurance",
+          "weight": 0.1
+        },
+        {
+          "name": "State Street",
+          "label": "STT",
+          "ticker": "STT",
+          "industry": "Asset Management & Custody Banks",
+          "weight": 0.1
+        },
+        {
+          "name": "Block,",
+          "label": "XYZ",
+          "ticker": "XYZ",
+          "industry": "Transaction & Payment Processing Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Arch Capital Group",
+          "label": "ACGL",
+          "ticker": "ACGL",
+          "industry": "Property & Casualty Insurance",
+          "weight": 0.1
+        },
+        {
+          "name": "Prudential Financial",
+          "label": "PRU",
+          "ticker": "PRU",
+          "industry": "Life & Health Insurance",
+          "weight": 0.1
+        },
+        {
+          "name": "Huntington Bancshares",
+          "label": "HBAN",
+          "ticker": "HBAN",
+          "industry": "Regional Banks",
+          "weight": 0.1
+        },
+        {
+          "name": "M&T Bank",
+          "label": "MTB",
+          "ticker": "MTB",
+          "industry": "Regional Banks",
+          "weight": 0.1
+        },
+        {
+          "name": "Cboe Global Markets",
+          "label": "CBOE",
+          "ticker": "CBOE",
+          "industry": "Financial Exchanges & Data",
+          "weight": 0.1
+        },
+        {
+          "name": "Fiserv,",
+          "label": "FISV",
+          "ticker": "FISV",
+          "industry": "Transaction & Payment Processing Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Interactive Brokers Group",
+          "label": "IBKR",
+          "ticker": "IBKR",
+          "industry": "Investment Banking & Brokerage",
+          "weight": 0.1
+        },
+        {
+          "name": "Raymond James Financial",
+          "label": "RJF",
+          "ticker": "RJF",
+          "industry": "Investment Banking & Brokerage",
+          "weight": 0.1
+        },
+        {
+          "name": "Willis Towers Watson",
+          "label": "WTW",
+          "ticker": "WTW",
+          "industry": "Insurance Brokers",
+          "weight": 0.1
+        },
+        {
+          "name": "Northern Trust",
+          "label": "NTRS",
+          "ticker": "NTRS",
+          "industry": "Asset Management & Custody Banks",
+          "weight": 0.04
+        },
+        {
+          "name": "W. R. Berkley",
+          "label": "WRB",
+          "ticker": "WRB",
+          "industry": "Property & Casualty Insurance",
+          "weight": 0.04
+        },
+        {
+          "name": "Citizens Financial Group",
+          "label": "CFG",
+          "ticker": "CFG",
+          "industry": "Regional Banks",
+          "weight": 0.04
+        },
+        {
+          "name": "Fidelity National Information Services",
+          "label": "FIS",
+          "ticker": "FIS",
+          "industry": "Transaction & Payment Processing Services",
+          "weight": 0.04
+        },
+        {
+          "name": "Cincinnati Financial",
+          "label": "CINF",
+          "ticker": "CINF",
+          "industry": "Property & Casualty Insurance",
+          "weight": 0.04
+        },
+        {
+          "name": "Ares Management",
+          "label": "ARES",
+          "ticker": "ARES",
+          "industry": "Asset Management & Custody Banks",
+          "weight": 0.04
+        },
+        {
+          "name": "Synchrony Financial",
+          "label": "SYF",
+          "ticker": "SYF",
+          "industry": "Consumer Finance",
+          "weight": 0.04
+        },
+        {
+          "name": "Brown & Brown",
+          "label": "BRO",
+          "ticker": "BRO",
+          "industry": "Insurance Brokers",
+          "weight": 0.04
+        },
+        {
+          "name": "Loews",
+          "label": "L",
+          "ticker": "L",
+          "industry": "Multi-line Insurance",
+          "weight": 0.04
+        },
+        {
+          "name": "Regions Financial",
+          "label": "RF",
+          "ticker": "RF",
+          "industry": "Regional Banks",
+          "weight": 0.04
+        },
+        {
+          "name": "KeyCorp",
+          "label": "KEY",
+          "ticker": "KEY",
+          "industry": "Regional Banks",
+          "weight": 0.04
+        },
+        {
+          "name": "Corpay",
+          "label": "CPAY",
+          "ticker": "CPAY",
+          "industry": "Transaction & Payment Processing Services",
+          "weight": 0.03
+        },
+        {
+          "name": "T. Rowe Price",
+          "label": "TROW",
+          "ticker": "TROW",
+          "industry": "Asset Management & Custody Banks",
+          "weight": 0.03
+        },
+        {
+          "name": "Principal Financial Group",
+          "label": "PFG",
+          "ticker": "PFG",
+          "industry": "Life & Health Insurance",
+          "weight": 0.03
+        },
+        {
+          "name": "Broadridge Financial Solutions",
+          "label": "BR",
+          "ticker": "BR",
+          "industry": "Data Processing & Outsourced Services",
+          "weight": 0.03
+        },
+        {
+          "name": "Global Payments",
+          "label": "GPN",
+          "ticker": "GPN",
+          "industry": "Transaction & Payment Processing Services",
+          "weight": 0.03
+        },
+        {
+          "name": "Everest Group",
+          "label": "EG",
+          "ticker": "EG",
+          "industry": "Reinsurance",
+          "weight": 0.02
+        },
+        {
+          "name": "Erie Indemnity",
+          "label": "ERIE",
+          "ticker": "ERIE",
+          "industry": "Insurance Brokers",
+          "weight": 0.02
+        },
+        {
+          "name": "Franklin Resources",
+          "label": "BEN",
+          "ticker": "BEN",
+          "industry": "Asset Management & Custody Banks",
+          "weight": 0.02
+        },
+        {
+          "name": "Assurant",
+          "label": "AIZ",
+          "ticker": "AIZ",
+          "industry": "Multi-line Insurance",
+          "weight": 0.02
+        },
+        {
+          "name": "Globe Life",
+          "label": "GL",
+          "ticker": "GL",
+          "industry": "Life & Health Insurance",
+          "weight": 0.02
+        },
+        {
+          "name": "Invesco",
+          "label": "IVZ",
+          "ticker": "IVZ",
+          "industry": "Asset Management & Custody Banks",
+          "weight": 0.02
+        },
+        {
+          "name": "FactSet",
+          "label": "FDS",
+          "ticker": "FDS",
+          "industry": "Financial Exchanges & Data",
+          "weight": 0.01
+        }
+      ]
+    },
+    {
+      "key": "communication-services",
+      "name": {
+        "en": "Communication Services",
+        "es": "Servicios de comunicación"
+      },
+      "weight": 11.38,
+      "companies": 23,
+      "color": "#b793ff",
+      "top": [
+        {
+          "name": "Alphabet Inc. A",
+          "label": "GOOGL",
+          "ticker": "GOOGL",
+          "industry": "Interactive Media & Services",
+          "weight": 3
+        },
+        {
+          "name": "Alphabet Inc. C",
+          "label": "GOOG",
+          "ticker": "GOOG",
+          "industry": "Interactive Media & Services",
+          "weight": 2.8
+        },
+        {
+          "name": "Meta Platforms",
+          "label": "META",
+          "ticker": "META",
+          "industry": "Interactive Media & Services",
+          "weight": 2.4
+        },
+        {
+          "name": "Netflix",
+          "label": "NFLX",
+          "ticker": "NFLX",
+          "industry": "Movies & Entertainment",
+          "weight": 0.7
+        },
+        {
+          "name": "T-Mobile US",
+          "label": "TMUS",
+          "ticker": "TMUS",
+          "industry": "Wireless Telecommunication Services",
+          "weight": 0.4
+        },
+        {
+          "name": "Verizon",
+          "label": "VZ",
+          "ticker": "VZ",
+          "industry": "Integrated Telecommunication Services",
+          "weight": 0.4
+        },
+        {
+          "name": "AT&T",
+          "label": "T",
+          "ticker": "T",
+          "industry": "Integrated Telecommunication Services",
+          "weight": 0.4
+        },
+        {
+          "name": "Walt Disney Company",
+          "label": "DIS",
+          "ticker": "DIS",
+          "industry": "Movies & Entertainment",
+          "weight": 0.3
+        },
+        {
+          "name": "Comcast",
+          "label": "CMCSA",
+          "ticker": "CMCSA",
+          "industry": "Cable & Satellite",
+          "weight": 0.2
+        },
+        {
+          "name": "Warner Bros. Discovery",
+          "label": "WBD",
+          "ticker": "WBD",
+          "industry": "Broadcasting",
+          "weight": 0.1
+        },
+        {
+          "name": "Electronic Arts",
+          "label": "EA",
+          "ticker": "EA",
+          "industry": "Interactive Home Entertainment",
+          "weight": 0.1
+        },
+        {
+          "name": "Take-Two Interactive",
+          "label": "TTWO",
+          "ticker": "TTWO",
+          "industry": "Interactive Home Entertainment",
+          "weight": 0.1
+        },
+        {
+          "name": "Live Nation Entertainment",
+          "label": "LYV",
+          "ticker": "LYV",
+          "industry": "Movies & Entertainment",
+          "weight": 0.1
+        },
+        {
+          "name": "EchoStar",
+          "label": "SATS",
+          "ticker": "SATS",
+          "industry": "Wireless Telecommunication Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Charter Communications",
+          "label": "CHTR",
+          "ticker": "CHTR",
+          "industry": "Cable & Satellite",
+          "weight": 0.1
+        },
+        {
+          "name": "Omnicom Group",
+          "label": "OMC",
+          "ticker": "OMC",
+          "industry": "Advertising",
+          "weight": 0.04
+        },
+        {
+          "name": "TKO Group Holdings",
+          "label": "TKO",
+          "ticker": "TKO",
+          "industry": "Movies & Entertainment",
+          "weight": 0.03
+        },
+        {
+          "name": "Fox Corporation B",
+          "label": "FOX",
+          "ticker": "FOX",
+          "industry": "Broadcasting",
+          "weight": 0.02
+        },
+        {
+          "name": "Fox Corporation A",
+          "label": "FOXA",
+          "ticker": "FOXA",
+          "industry": "Broadcasting",
+          "weight": 0.02
+        },
+        {
+          "name": "The Trade Desk,",
+          "label": "TTD",
+          "ticker": "TTD",
+          "industry": "Advertising",
+          "weight": 0.02
+        },
+        {
+          "name": "Paramount Skydance Corp",
+          "label": "Paramount Skydance Corp",
+          "ticker": "Paramount Skydance Corp",
+          "industry": "Other",
+          "weight": 0.02
+        },
+        {
+          "name": "News Corp A",
+          "label": "NWSA",
+          "ticker": "NWSA",
+          "industry": "Publishing",
+          "weight": 0.02
+        },
+        {
+          "name": "News Corp B",
+          "label": "NWS",
+          "ticker": "NWS",
+          "industry": "Publishing",
+          "weight": 0.01
+        }
+      ]
+    },
+    {
+      "key": "consumer-discretionary",
+      "name": {
+        "en": "Consumer Discretionary",
+        "es": "Consumo discrecional"
+      },
+      "weight": 10.82,
+      "companies": 50,
+      "color": "#8395ff",
+      "top": [
+        {
+          "name": "Amazon",
+          "label": "AMZN",
+          "ticker": "AMZN",
+          "industry": "Broadline Retail",
+          "weight": 3.7
+        },
+        {
+          "name": "Tesla,",
+          "label": "TSLA",
+          "ticker": "TSLA",
+          "industry": "Automobile Manufacturers",
+          "weight": 2.3
+        },
+        {
+          "name": "Home Depot",
+          "label": "HD",
+          "ticker": "HD",
+          "industry": "Home Improvement Retail",
+          "weight": 0.6
+        },
+        {
+          "name": "McDonald's",
+          "label": "MCD",
+          "ticker": "MCD",
+          "industry": "Restaurants",
+          "weight": 0.4
+        },
+        {
+          "name": "TJX Companies",
+          "label": "TJX",
+          "ticker": "TJX",
+          "industry": "Apparel Retail",
+          "weight": 0.3
+        },
+        {
+          "name": "Booking Holdings",
+          "label": "BKNG",
+          "ticker": "BKNG",
+          "industry": "Hotels, Resorts & Cruise Lines",
+          "weight": 0.2
+        },
+        {
+          "name": "Lowe's",
+          "label": "LOW",
+          "ticker": "LOW",
+          "industry": "Home Improvement Retail",
+          "weight": 0.2
+        },
+        {
+          "name": "Starbucks",
+          "label": "SBUX",
+          "ticker": "SBUX",
+          "industry": "Restaurants",
+          "weight": 0.2
+        },
+        {
+          "name": "Marriott International",
+          "label": "MAR",
+          "ticker": "MAR",
+          "industry": "Hotels, Resorts & Cruise Lines",
+          "weight": 0.2
+        },
+        {
+          "name": "O'Reilly Auto Parts",
+          "label": "O'Reilly Auto Parts",
+          "ticker": "O'Reilly Auto Parts",
+          "industry": "Other",
+          "weight": 0.1
+        },
+        {
+          "name": "Nike,",
+          "label": "NKE",
+          "ticker": "NKE",
+          "industry": "Apparel, Accessories & Luxury Goods",
+          "weight": 0.1
+        },
+        {
+          "name": "Airbnb",
+          "label": "ABNB",
+          "ticker": "ABNB",
+          "industry": "Hotels, Resorts & Cruise Lines",
+          "weight": 0.1
+        },
+        {
+          "name": "Royal Caribbean Group",
+          "label": "RCL",
+          "ticker": "RCL",
+          "industry": "Hotels, Resorts & Cruise Lines",
+          "weight": 0.1
+        },
+        {
+          "name": "Hilton Worldwide",
+          "label": "HLT",
+          "ticker": "HLT",
+          "industry": "Hotels, Resorts & Cruise Lines",
+          "weight": 0.1
+        },
+        {
+          "name": "Ross Stores",
+          "label": "ROST",
+          "ticker": "ROST",
+          "industry": "Apparel Retail",
+          "weight": 0.1
+        },
+        {
+          "name": "General Motors",
+          "label": "GM",
+          "ticker": "GM",
+          "industry": "Automobile Manufacturers",
+          "weight": 0.1
+        },
+        {
+          "name": "DoorDash",
+          "label": "DASH",
+          "ticker": "DASH",
+          "industry": "Specialized Consumer Services",
+          "weight": 0.1
+        },
+        {
+          "name": "AutoZone",
+          "label": "AZO",
+          "ticker": "AZO",
+          "industry": "Automotive Retail",
+          "weight": 0.1
+        },
+        {
+          "name": "Target",
+          "label": "TGT",
+          "ticker": "TGT",
+          "industry": "Consumer Staples Merchandise Retail",
+          "weight": 0.1
+        },
+        {
+          "name": "Ford Motor Company",
+          "label": "F",
+          "ticker": "F",
+          "industry": "Automobile Manufacturers",
+          "weight": 0.1
+        },
+        {
+          "name": "Garmin",
+          "label": "GRMN",
+          "ticker": "GRMN",
+          "industry": "Consumer Electronics",
+          "weight": 0.1
+        },
+        {
+          "name": "Yum! Brands",
+          "label": "YUM",
+          "ticker": "YUM",
+          "industry": "Restaurants",
+          "weight": 0.1
+        },
+        {
+          "name": "Carvana Co.",
+          "label": "Carvana Co.",
+          "ticker": "Carvana Co.",
+          "industry": "Other",
+          "weight": 0.1
+        },
+        {
+          "name": "Chipotle Mexican Grill",
+          "label": "CMG",
+          "ticker": "CMG",
+          "industry": "Restaurants",
+          "weight": 0.1
+        },
+        {
+          "name": "eBay",
+          "label": "EBAY",
+          "ticker": "EBAY",
+          "industry": "Broadline Retail",
+          "weight": 0.1
+        },
+        {
+          "name": "D. R. Horton",
+          "label": "DHI",
+          "ticker": "DHI",
+          "industry": "Homebuilding",
+          "weight": 0.1
+        },
+        {
+          "name": "Las Vegas Sands",
+          "label": "LVS",
+          "ticker": "LVS",
+          "industry": "Casinos & Gaming",
+          "weight": 0.1
+        },
+        {
+          "name": "Carnival",
+          "label": "CCL",
+          "ticker": "CCL",
+          "industry": "Hotels, Resorts & Cruise Lines",
+          "weight": 0.1
+        },
+        {
+          "name": "Expedia Group",
+          "label": "EXPE",
+          "ticker": "EXPE",
+          "industry": "Hotels, Resorts & Cruise Lines",
+          "weight": 0.1
+        },
+        {
+          "name": "Tapestry,",
+          "label": "TPR",
+          "ticker": "TPR",
+          "industry": "Apparel, Accessories & Luxury Goods",
+          "weight": 0.1
+        },
+        {
+          "name": "Dollar General",
+          "label": "DG",
+          "ticker": "DG",
+          "industry": "Consumer Staples Merchandise Retail",
+          "weight": 0.1
+        },
+        {
+          "name": "Tractor Supply",
+          "label": "TSCO",
+          "ticker": "TSCO",
+          "industry": "Other Specialty Retail",
+          "weight": 0.04
+        },
+        {
+          "name": "Darden Restaurants",
+          "label": "DRI",
+          "ticker": "DRI",
+          "industry": "Restaurants",
+          "weight": 0.04
+        },
+        {
+          "name": "Ulta Beauty",
+          "label": "ULTA",
+          "ticker": "ULTA",
+          "industry": "Other Specialty Retail",
+          "weight": 0.04
+        },
+        {
+          "name": "PulteGroup",
+          "label": "PHM",
+          "ticker": "PHM",
+          "industry": "Homebuilding",
+          "weight": 0.04
+        },
+        {
+          "name": "Williams-Sonoma",
+          "label": "WSM",
+          "ticker": "WSM",
+          "industry": "Homefurnishing Retail",
+          "weight": 0.04
+        },
+        {
+          "name": "Lennar",
+          "label": "LEN",
+          "ticker": "LEN",
+          "industry": "Homebuilding",
+          "weight": 0.04
+        },
+        {
+          "name": "Ralph Lauren",
+          "label": "RL",
+          "ticker": "RL",
+          "industry": "Apparel, Accessories & Luxury Goods",
+          "weight": 0.03
+        },
+        {
+          "name": "NVR,",
+          "label": "NVR",
+          "ticker": "NVR",
+          "industry": "Homebuilding",
+          "weight": 0.03
+        },
+        {
+          "name": "Lululemon Athletica",
+          "label": "LULU",
+          "ticker": "LULU",
+          "industry": "Apparel, Accessories & Luxury Goods",
+          "weight": 0.03
+        },
+        {
+          "name": "Genuine Parts Company",
+          "label": "GPC",
+          "ticker": "GPC",
+          "industry": "Distributors",
+          "weight": 0.03
+        },
+        {
+          "name": "Aptiv",
+          "label": "APTV",
+          "ticker": "APTV",
+          "industry": "Automotive Parts & Equipment",
+          "weight": 0.02
+        },
+        {
+          "name": "Deckers Brands",
+          "label": "DECK",
+          "ticker": "DECK",
+          "industry": "Footwear",
+          "weight": 0.02
+        },
+        {
+          "name": "Best Buy",
+          "label": "BBY",
+          "ticker": "BBY",
+          "industry": "Computer & Electronics Retail",
+          "weight": 0.02
+        },
+        {
+          "name": "Hasbro",
+          "label": "HAS",
+          "ticker": "HAS",
+          "industry": "Leisure Products",
+          "weight": 0.02
+        },
+        {
+          "name": "Domino's",
+          "label": "DPZ",
+          "ticker": "DPZ",
+          "industry": "Restaurants",
+          "weight": 0.02
+        },
+        {
+          "name": "Wynn Resorts",
+          "label": "WYNN",
+          "ticker": "WYNN",
+          "industry": "Casinos & Gaming",
+          "weight": 0.02
+        },
+        {
+          "name": "MGM Resorts",
+          "label": "MGM",
+          "ticker": "MGM",
+          "industry": "Casinos & Gaming",
+          "weight": 0.02
+        },
+        {
+          "name": "Norwegian Cruise Line Holdings",
+          "label": "NCLH",
+          "ticker": "NCLH",
+          "industry": "Hotels, Resorts & Cruise Lines",
+          "weight": 0.01
+        },
+        {
+          "name": "Pool",
+          "label": "POOL",
+          "ticker": "POOL",
+          "industry": "Distributors",
+          "weight": 0.01
+        }
+      ]
+    },
+    {
+      "key": "health-care",
+      "name": {
+        "en": "Health Care",
+        "es": "Salud"
+      },
+      "weight": 9.73,
+      "companies": 59,
+      "color": "#e7e3ff",
+      "top": [
+        {
+          "name": "Lilly (Eli)",
+          "label": "Lilly (Eli)",
+          "ticker": "Lilly (Eli)",
+          "industry": "Other",
+          "weight": 1.4
+        },
+        {
+          "name": "Johnson & Johnson",
+          "label": "JNJ",
+          "ticker": "JNJ",
+          "industry": "Pharmaceuticals",
+          "weight": 1
+        },
+        {
+          "name": "AbbVie",
+          "label": "ABBV",
+          "ticker": "ABBV",
+          "industry": "Biotechnology",
+          "weight": 0.7
+        },
+        {
+          "name": "Merck & Co.",
+          "label": "MRK",
+          "ticker": "MRK",
+          "industry": "Pharmaceuticals",
+          "weight": 0.5
+        },
+        {
+          "name": "UnitedHealth Group",
+          "label": "UNH",
+          "ticker": "UNH",
+          "industry": "Managed Health Care",
+          "weight": 0.4
+        },
+        {
+          "name": "Amgen",
+          "label": "AMGN",
+          "ticker": "AMGN",
+          "industry": "Biotechnology",
+          "weight": 0.3
+        },
+        {
+          "name": "Thermo Fisher Scientific",
+          "label": "TMO",
+          "ticker": "TMO",
+          "industry": "Life Sciences Tools & Services",
+          "weight": 0.3
+        },
+        {
+          "name": "Abbott Laboratories",
+          "label": "ABT",
+          "ticker": "ABT",
+          "industry": "Health Care Equipment",
+          "weight": 0.3
+        },
+        {
+          "name": "Gilead Sciences",
+          "label": "GILD",
+          "ticker": "GILD",
+          "industry": "Biotechnology",
+          "weight": 0.3
+        },
+        {
+          "name": "Intuitive Surgical",
+          "label": "ISRG",
+          "ticker": "ISRG",
+          "industry": "Health Care Equipment",
+          "weight": 0.3
+        },
+        {
+          "name": "Pfizer",
+          "label": "PFE",
+          "ticker": "PFE",
+          "industry": "Pharmaceuticals",
+          "weight": 0.3
+        },
+        {
+          "name": "Danaher",
+          "label": "DHR",
+          "ticker": "DHR",
+          "industry": "Life Sciences Tools & Services",
+          "weight": 0.2
+        },
+        {
+          "name": "Stryker",
+          "label": "SYK",
+          "ticker": "SYK",
+          "industry": "Health Care Equipment",
+          "weight": 0.2
+        },
+        {
+          "name": "Bristol Myers Squibb",
+          "label": "BMY",
+          "ticker": "BMY",
+          "industry": "Pharmaceuticals",
+          "weight": 0.2
+        },
+        {
+          "name": "Vertex Pharmaceuticals",
+          "label": "VRTX",
+          "ticker": "VRTX",
+          "industry": "Biotechnology",
+          "weight": 0.2
+        },
+        {
+          "name": "Medtronic",
+          "label": "MDT",
+          "ticker": "MDT",
+          "industry": "Health Care Equipment",
+          "weight": 0.2
+        },
+        {
+          "name": "McKesson",
+          "label": "MCK",
+          "ticker": "MCK",
+          "industry": "Health Care Distributors",
+          "weight": 0.2
+        },
+        {
+          "name": "HCA Healthcare",
+          "label": "HCA",
+          "ticker": "HCA",
+          "industry": "Health Care Facilities",
+          "weight": 0.2
+        },
+        {
+          "name": "Boston Scientific",
+          "label": "BSX",
+          "ticker": "BSX",
+          "industry": "Health Care Equipment",
+          "weight": 0.2
+        },
+        {
+          "name": "CVS Health",
+          "label": "CVS",
+          "ticker": "CVS",
+          "industry": "Health Care Services",
+          "weight": 0.2
+        },
+        {
+          "name": "Regeneron Pharmaceuticals",
+          "label": "REGN",
+          "ticker": "REGN",
+          "industry": "Biotechnology",
+          "weight": 0.1
+        },
+        {
+          "name": "Cigna",
+          "label": "CI",
+          "ticker": "CI",
+          "industry": "Health Care Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Elevance Health",
+          "label": "ELV",
+          "ticker": "ELV",
+          "industry": "Managed Health Care",
+          "weight": 0.1
+        },
+        {
+          "name": "Cencora",
+          "label": "COR",
+          "ticker": "COR",
+          "industry": "Health Care Distributors",
+          "weight": 0.1
+        },
+        {
+          "name": "Zoetis",
+          "label": "ZTS",
+          "ticker": "ZTS",
+          "industry": "Pharmaceuticals",
+          "weight": 0.1
+        },
+        {
+          "name": "Cardinal Health",
+          "label": "CAH",
+          "ticker": "CAH",
+          "industry": "Health Care Distributors",
+          "weight": 0.1
+        },
+        {
+          "name": "Edwards Lifesciences",
+          "label": "EW",
+          "ticker": "EW",
+          "industry": "Health Care Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Idexx Laboratories",
+          "label": "IDXX",
+          "ticker": "IDXX",
+          "industry": "Health Care Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Becton Dickinson",
+          "label": "BDX",
+          "ticker": "BDX",
+          "industry": "Health Care Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "ResMed",
+          "label": "RMD",
+          "ticker": "RMD",
+          "industry": "Health Care Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Agilent Technologies",
+          "label": "A",
+          "ticker": "A",
+          "industry": "Life Sciences Tools & Services",
+          "weight": 0.1
+        },
+        {
+          "name": "GE HealthCare",
+          "label": "GEHC",
+          "ticker": "GEHC",
+          "industry": "Health Care Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Waters",
+          "label": "WAT",
+          "ticker": "WAT",
+          "industry": "Life Sciences Tools & Services",
+          "weight": 0.1
+        },
+        {
+          "name": "IQVIA",
+          "label": "IQV",
+          "ticker": "IQV",
+          "industry": "Life Sciences Tools & Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Biogen",
+          "label": "BIIB",
+          "ticker": "BIIB",
+          "industry": "Biotechnology",
+          "weight": 0.1
+        },
+        {
+          "name": "Mettler Toledo",
+          "label": "MTD",
+          "ticker": "MTD",
+          "industry": "Life Sciences Tools & Services",
+          "weight": 0.04
+        },
+        {
+          "name": "Dexcom",
+          "label": "DXCM",
+          "ticker": "DXCM",
+          "industry": "Health Care Equipment",
+          "weight": 0.04
+        },
+        {
+          "name": "LabCorp",
+          "label": "LH",
+          "ticker": "LH",
+          "industry": "Health Care Services",
+          "weight": 0.04
+        },
+        {
+          "name": "Quest Diagnostics",
+          "label": "DGX",
+          "ticker": "DGX",
+          "industry": "Health Care Services",
+          "weight": 0.04
+        },
+        {
+          "name": "Steris",
+          "label": "STE",
+          "ticker": "STE",
+          "industry": "Health Care Equipment",
+          "weight": 0.04
+        },
+        {
+          "name": "Humana",
+          "label": "HUM",
+          "ticker": "HUM",
+          "industry": "Managed Health Care",
+          "weight": 0.03
+        },
+        {
+          "name": "Moderna",
+          "label": "MRNA",
+          "ticker": "MRNA",
+          "industry": "Biotechnology",
+          "weight": 0.03
+        },
+        {
+          "name": "Incyte",
+          "label": "INCY",
+          "ticker": "INCY",
+          "industry": "Biotechnology",
+          "weight": 0.03
+        },
+        {
+          "name": "West Pharmaceutical Services",
+          "label": "WST",
+          "ticker": "WST",
+          "industry": "Health Care Supplies",
+          "weight": 0.03
+        },
+        {
+          "name": "Zimmer Biomet",
+          "label": "ZBH",
+          "ticker": "ZBH",
+          "industry": "Health Care Equipment",
+          "weight": 0.03
+        },
+        {
+          "name": "Hologic",
+          "label": "Hologic",
+          "ticker": "Hologic",
+          "industry": "Other",
+          "weight": 0.03
+        },
+        {
+          "name": "Centene",
+          "label": "CNC",
+          "ticker": "CNC",
+          "industry": "Managed Health Care",
+          "weight": 0.03
+        },
+        {
+          "name": "Viatris",
+          "label": "VTRS",
+          "ticker": "VTRS",
+          "industry": "Pharmaceuticals",
+          "weight": 0.03
+        },
+        {
+          "name": "Insulet",
+          "label": "PODD",
+          "ticker": "PODD",
+          "industry": "Health Care Equipment",
+          "weight": 0.03
+        },
+        {
+          "name": "Cooper Companies",
+          "label": "COO",
+          "ticker": "COO",
+          "industry": "Health Care Supplies",
+          "weight": 0.02
+        },
+        {
+          "name": "Align Technology",
+          "label": "ALGN",
+          "ticker": "ALGN",
+          "industry": "Health Care Supplies",
+          "weight": 0.02
+        },
+        {
+          "name": "Universal Health Services",
+          "label": "UHS",
+          "ticker": "UHS",
+          "industry": "Health Care Facilities",
+          "weight": 0.02
+        },
+        {
+          "name": "Solventum",
+          "label": "SOLV",
+          "ticker": "SOLV",
+          "industry": "Health Care Technology",
+          "weight": 0.02
+        },
+        {
+          "name": "DaVita",
+          "label": "DVA",
+          "ticker": "DVA",
+          "industry": "Health Care Services",
+          "weight": 0.02
+        },
+        {
+          "name": "Revvity",
+          "label": "RVTY",
+          "ticker": "RVTY",
+          "industry": "Health Care Equipment",
+          "weight": 0.02
+        },
+        {
+          "name": "Henry Schein",
+          "label": "HSIC",
+          "ticker": "HSIC",
+          "industry": "Health Care Distributors",
+          "weight": 0.01
+        },
+        {
+          "name": "Baxter International",
+          "label": "BAX",
+          "ticker": "BAX",
+          "industry": "Health Care Equipment",
+          "weight": 0.01
+        },
+        {
+          "name": "Bio-Techne",
+          "label": "TECH",
+          "ticker": "TECH",
+          "industry": "Life Sciences Tools & Services",
+          "weight": 0.01
+        },
+        {
+          "name": "Charles River Laboratories",
+          "label": "CRL",
+          "ticker": "CRL",
+          "industry": "Life Sciences Tools & Services",
+          "weight": 0.01
+        }
+      ]
+    },
+    {
+      "key": "industrials",
+      "name": {
+        "en": "Industrials",
+        "es": "Industriales"
+      },
+      "weight": 9.31,
+      "companies": 78,
+      "color": "#ff9cbc",
+      "top": [
+        {
+          "name": "Caterpillar",
+          "label": "CAT",
+          "ticker": "CAT",
+          "industry": "Construction Machinery & Heavy Transportation Equipment",
+          "weight": 0.5
+        },
+        {
+          "name": "GE Aerospace",
+          "label": "GE",
+          "ticker": "GE",
+          "industry": "Aerospace & Defense",
+          "weight": 0.5
+        },
+        {
+          "name": "RTX",
+          "label": "RTX",
+          "ticker": "RTX",
+          "industry": "Aerospace & Defense",
+          "weight": 0.4
+        },
+        {
+          "name": "GE Vernova",
+          "label": "GEV",
+          "ticker": "GEV",
+          "industry": "Heavy Electrical Equipment",
+          "weight": 0.4
+        },
+        {
+          "name": "Deere & Company",
+          "label": "DE",
+          "ticker": "DE",
+          "industry": "Agricultural & Farm Machinery",
+          "weight": 0.3
+        },
+        {
+          "name": "Boeing",
+          "label": "BA",
+          "ticker": "BA",
+          "industry": "Aerospace & Defense",
+          "weight": 0.3
+        },
+        {
+          "name": "Uber",
+          "label": "UBER",
+          "ticker": "UBER",
+          "industry": "Passenger Ground Transportation",
+          "weight": 0.3
+        },
+        {
+          "name": "Honeywell",
+          "label": "HON",
+          "ticker": "HON",
+          "industry": "Industrial Conglomerates",
+          "weight": 0.3
+        },
+        {
+          "name": "Union Pacific",
+          "label": "UNP",
+          "ticker": "UNP",
+          "industry": "Rail Transportation",
+          "weight": 0.3
+        },
+        {
+          "name": "Lockheed Martin",
+          "label": "LMT",
+          "ticker": "LMT",
+          "industry": "Aerospace & Defense",
+          "weight": 0.2
+        },
+        {
+          "name": "Eaton",
+          "label": "ETN",
+          "ticker": "ETN",
+          "industry": "Electrical Components & Equipment",
+          "weight": 0.2
+        },
+        {
+          "name": "Parker Hannifin",
+          "label": "PH",
+          "ticker": "PH",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.2
+        },
+        {
+          "name": "Northrop Grumman",
+          "label": "NOC",
+          "ticker": "NOC",
+          "industry": "Aerospace & Defense",
+          "weight": 0.2
+        },
+        {
+          "name": "Waste Management",
+          "label": "WM",
+          "ticker": "WM",
+          "industry": "Environmental & Facilities Services",
+          "weight": 0.2
+        },
+        {
+          "name": "General Dynamics",
+          "label": "GD",
+          "ticker": "GD",
+          "industry": "Aerospace & Defense",
+          "weight": 0.2
+        },
+        {
+          "name": "Vertiv Holdings Co",
+          "label": "Vertiv Holdings Co",
+          "ticker": "Vertiv Holdings Co",
+          "industry": "Other",
+          "weight": 0.2
+        },
+        {
+          "name": "Howmet Aerospace",
+          "label": "HWM",
+          "ticker": "HWM",
+          "industry": "Aerospace & Defense",
+          "weight": 0.2
+        },
+        {
+          "name": "Trane Technologies",
+          "label": "TT",
+          "ticker": "TT",
+          "industry": "Building Products",
+          "weight": 0.2
+        },
+        {
+          "name": "Automatic Data Processing",
+          "label": "ADP",
+          "ticker": "ADP",
+          "industry": "Human Resource & Employment Services",
+          "weight": 0.1
+        },
+        {
+          "name": "FedEx",
+          "label": "FDX",
+          "ticker": "FDX",
+          "industry": "Air Freight & Logistics",
+          "weight": 0.1
+        },
+        {
+          "name": "United Parcel Service",
+          "label": "UPS",
+          "ticker": "UPS",
+          "industry": "Air Freight & Logistics",
+          "weight": 0.1
+        },
+        {
+          "name": "Quanta Services",
+          "label": "PWR",
+          "ticker": "PWR",
+          "industry": "Construction & Engineering",
+          "weight": 0.1
+        },
+        {
+          "name": "Johnson Controls",
+          "label": "JCI",
+          "ticker": "JCI",
+          "industry": "Building Products",
+          "weight": 0.1
+        },
+        {
+          "name": "3M",
+          "label": "MMM",
+          "ticker": "MMM",
+          "industry": "Industrial Conglomerates",
+          "weight": 0.1
+        },
+        {
+          "name": "CSX",
+          "label": "CSX",
+          "ticker": "CSX",
+          "industry": "Rail Transportation",
+          "weight": 0.1
+        },
+        {
+          "name": "Illinois Tool Works",
+          "label": "ITW",
+          "ticker": "ITW",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.1
+        },
+        {
+          "name": "Cummins",
+          "label": "CMI",
+          "ticker": "CMI",
+          "industry": "Construction Machinery & Heavy Transportation Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Emerson Electric",
+          "label": "EMR",
+          "ticker": "EMR",
+          "industry": "Electrical Components & Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Republic Services",
+          "label": "RSG",
+          "ticker": "RSG",
+          "industry": "Environmental & Facilities Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Cintas",
+          "label": "CTAS",
+          "ticker": "CTAS",
+          "industry": "Diversified Support Services",
+          "weight": 0.1
+        },
+        {
+          "name": "TransDigm Group",
+          "label": "TDG",
+          "ticker": "TDG",
+          "industry": "Aerospace & Defense",
+          "weight": 0.1
+        },
+        {
+          "name": "L3Harris",
+          "label": "LHX",
+          "ticker": "LHX",
+          "industry": "Aerospace & Defense",
+          "weight": 0.1
+        },
+        {
+          "name": "Norfolk Southern Railway",
+          "label": "Norfolk Southern Railway",
+          "ticker": "Norfolk Southern Railway",
+          "industry": "Other",
+          "weight": 0.1
+        },
+        {
+          "name": "Paccar",
+          "label": "PCAR",
+          "ticker": "PCAR",
+          "industry": "Construction Machinery & Heavy Transportation Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Fastenal",
+          "label": "FAST",
+          "ticker": "FAST",
+          "industry": "Trading Companies & Distributors",
+          "weight": 0.1
+        },
+        {
+          "name": "W. W. Grainger",
+          "label": "GWW",
+          "ticker": "GWW",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.1
+        },
+        {
+          "name": "Ametek",
+          "label": "AME",
+          "ticker": "AME",
+          "industry": "Electrical Components & Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Carrier Global",
+          "label": "CARR",
+          "ticker": "CARR",
+          "industry": "Building Products",
+          "weight": 0.1
+        },
+        {
+          "name": "United Rentals",
+          "label": "URI",
+          "ticker": "URI",
+          "industry": "Trading Companies & Distributors",
+          "weight": 0.1
+        },
+        {
+          "name": "Comfort Systems USA,",
+          "label": "FIX",
+          "ticker": "FIX",
+          "industry": "Construction & Engineering",
+          "weight": 0.1
+        },
+        {
+          "name": "Delta Air Lines",
+          "label": "DAL",
+          "ticker": "DAL",
+          "industry": "Passenger Airlines",
+          "weight": 0.1
+        },
+        {
+          "name": "Wabtec",
+          "label": "WAB",
+          "ticker": "WAB",
+          "industry": "Construction Machinery & Heavy Transportation Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Old Dominion",
+          "label": "ODFL",
+          "ticker": "ODFL",
+          "industry": "Cargo Ground Transportation",
+          "weight": 0.1
+        },
+        {
+          "name": "Rockwell Automation",
+          "label": "ROK",
+          "ticker": "ROK",
+          "industry": "Electrical Components & Equipment",
+          "weight": 0.1
+        },
+        {
+          "name": "Axon Enterprise",
+          "label": "AXON",
+          "ticker": "AXON",
+          "industry": "Aerospace & Defense",
+          "weight": 0.1
+        },
+        {
+          "name": "Paychex",
+          "label": "PAYX",
+          "ticker": "PAYX",
+          "industry": "Human Resource & Employment Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Copart",
+          "label": "CPRT",
+          "ticker": "CPRT",
+          "industry": "Diversified Support Services",
+          "weight": 0.1
+        },
+        {
+          "name": "EMCOR Group,",
+          "label": "EME",
+          "ticker": "EME",
+          "industry": "Construction & Engineering",
+          "weight": 0.1
+        },
+        {
+          "name": "Ingersoll Rand",
+          "label": "IR",
+          "ticker": "IR",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.1
+        },
+        {
+          "name": "Otis Worldwide",
+          "label": "OTIS",
+          "ticker": "OTIS",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.1
+        },
+        {
+          "name": "Xylem",
+          "label": "XYL",
+          "ticker": "XYL",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.1
+        },
+        {
+          "name": "United Airlines Holdings",
+          "label": "UAL",
+          "ticker": "UAL",
+          "industry": "Passenger Airlines",
+          "weight": 0.1
+        },
+        {
+          "name": "Dover",
+          "label": "DOV",
+          "ticker": "DOV",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.1
+        },
+        {
+          "name": "Verisk Analytics",
+          "label": "VRSK",
+          "ticker": "VRSK",
+          "industry": "Research & Consulting Services",
+          "weight": 0.04
+        },
+        {
+          "name": "Rollins,",
+          "label": "ROL",
+          "ticker": "ROL",
+          "industry": "Environmental & Facilities Services",
+          "weight": 0.04
+        },
+        {
+          "name": "Hubbell Incorporated",
+          "label": "HUBB",
+          "ticker": "HUBB",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.04
+        },
+        {
+          "name": "Equifax",
+          "label": "EFX",
+          "ticker": "EFX",
+          "industry": "Research & Consulting Services",
+          "weight": 0.04
+        },
+        {
+          "name": "Veralto",
+          "label": "VLTO",
+          "ticker": "VLTO",
+          "industry": "Environmental & Facilities Services",
+          "weight": 0.04
+        },
+        {
+          "name": "Leidos",
+          "label": "LDOS",
+          "ticker": "LDOS",
+          "industry": "Diversified Support Services",
+          "weight": 0.03
+        },
+        {
+          "name": "J.B. Hunt",
+          "label": "JBHT",
+          "ticker": "JBHT",
+          "industry": "Cargo Ground Transportation",
+          "weight": 0.03
+        },
+        {
+          "name": "C.H. Robinson",
+          "label": "CHRW",
+          "ticker": "CHRW",
+          "industry": "Air Freight & Logistics",
+          "weight": 0.03
+        },
+        {
+          "name": "Expeditors International",
+          "label": "EXPD",
+          "ticker": "EXPD",
+          "industry": "Air Freight & Logistics",
+          "weight": 0.03
+        },
+        {
+          "name": "Snap-on",
+          "label": "SNA",
+          "ticker": "SNA",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.03
+        },
+        {
+          "name": "Southwest Airlines",
+          "label": "LUV",
+          "ticker": "LUV",
+          "industry": "Passenger Airlines",
+          "weight": 0.03
+        },
+        {
+          "name": "Fortive",
+          "label": "FTV",
+          "ticker": "FTV",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.03
+        },
+        {
+          "name": "Lennox International",
+          "label": "LII",
+          "ticker": "LII",
+          "industry": "Building Products",
+          "weight": 0.03
+        },
+        {
+          "name": "Textron",
+          "label": "TXT",
+          "ticker": "TXT",
+          "industry": "Aerospace & Defense",
+          "weight": 0.03
+        },
+        {
+          "name": "Jacobs Solutions",
+          "label": "J",
+          "ticker": "J",
+          "industry": "Construction & Engineering",
+          "weight": 0.03
+        },
+        {
+          "name": "Huntington Ingalls Industries",
+          "label": "HII",
+          "ticker": "HII",
+          "industry": "Aerospace & Defense",
+          "weight": 0.03
+        },
+        {
+          "name": "Nordson",
+          "label": "NDSN",
+          "ticker": "NDSN",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.02
+        },
+        {
+          "name": "IDEX",
+          "label": "IEX",
+          "ticker": "IEX",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.02
+        },
+        {
+          "name": "Pentair",
+          "label": "PNR",
+          "ticker": "PNR",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.02
+        },
+        {
+          "name": "Allegion",
+          "label": "ALLE",
+          "ticker": "ALLE",
+          "industry": "Building Products",
+          "weight": 0.02
+        },
+        {
+          "name": "Masco",
+          "label": "MAS",
+          "ticker": "MAS",
+          "industry": "Building Products",
+          "weight": 0.02
+        },
+        {
+          "name": "Generac",
+          "label": "GNRC",
+          "ticker": "GNRC",
+          "industry": "Electrical Components & Equipment",
+          "weight": 0.02
+        },
+        {
+          "name": "Stanley Black & Decker",
+          "label": "SWK",
+          "ticker": "SWK",
+          "industry": "Industrial Machinery & Supplies & Components",
+          "weight": 0.02
+        },
+        {
+          "name": "A. O. Smith",
+          "label": "AOS",
+          "ticker": "AOS",
+          "industry": "Building Products",
+          "weight": 0.02
+        },
+        {
+          "name": "Builders FirstSource",
+          "label": "BLDR",
+          "ticker": "BLDR",
+          "industry": "Building Products",
+          "weight": 0.02
+        }
+      ]
+    },
+    {
+      "key": "consumer-staples",
+      "name": {
+        "en": "Consumer Staples",
+        "es": "Consumo básico"
+      },
+      "weight": 6.37,
+      "companies": 33,
+      "color": "#ff985f",
+      "top": [
+        {
+          "name": "Walmart",
+          "label": "WMT",
+          "ticker": "WMT",
+          "industry": "Consumer Staples Merchandise Retail",
+          "weight": 1.7
+        },
+        {
+          "name": "Costco",
+          "label": "COST",
+          "ticker": "COST",
+          "industry": "Consumer Staples Merchandise Retail",
+          "weight": 0.8
+        },
+        {
+          "name": "Procter & Gamble",
+          "label": "PG",
+          "ticker": "PG",
+          "industry": "Personal Care Products",
+          "weight": 0.6
+        },
+        {
+          "name": "Coca-Cola Company",
+          "label": "KO",
+          "ticker": "KO",
+          "industry": "Soft Drinks & Non-alcoholic Beverages",
+          "weight": 0.6
+        },
+        {
+          "name": "Philip Morris International",
+          "label": "PM",
+          "ticker": "PM",
+          "industry": "Tobacco",
+          "weight": 0.5
+        },
+        {
+          "name": "PepsiCo",
+          "label": "PEP",
+          "ticker": "PEP",
+          "industry": "Soft Drinks & Non-alcoholic Beverages",
+          "weight": 0.4
+        },
+        {
+          "name": "Altria",
+          "label": "MO",
+          "ticker": "MO",
+          "industry": "Tobacco",
+          "weight": 0.2
+        },
+        {
+          "name": "Mondelez International",
+          "label": "MDLZ",
+          "ticker": "MDLZ",
+          "industry": "Packaged Foods & Meats",
+          "weight": 0.1
+        },
+        {
+          "name": "Monster Beverage",
+          "label": "MNST",
+          "ticker": "MNST",
+          "industry": "Soft Drinks & Non-alcoholic Beverages",
+          "weight": 0.1
+        },
+        {
+          "name": "Colgate-Palmolive",
+          "label": "CL",
+          "ticker": "CL",
+          "industry": "Household Products",
+          "weight": 0.1
+        },
+        {
+          "name": "Kroger",
+          "label": "KR",
+          "ticker": "KR",
+          "industry": "Food Retail",
+          "weight": 0.1
+        },
+        {
+          "name": "Hershey Company",
+          "label": "HSY",
+          "ticker": "HSY",
+          "industry": "Packaged Foods & Meats",
+          "weight": 0.1
+        },
+        {
+          "name": "Keurig Dr Pepper",
+          "label": "KDP",
+          "ticker": "KDP",
+          "industry": "Soft Drinks & Non-alcoholic Beverages",
+          "weight": 0.1
+        },
+        {
+          "name": "Archer Daniels Midland",
+          "label": "ADM",
+          "ticker": "ADM",
+          "industry": "Agricultural Products & Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Sysco",
+          "label": "SYY",
+          "ticker": "SYY",
+          "industry": "Food Distributors",
+          "weight": 0.1
+        },
+        {
+          "name": "Kenvue",
+          "label": "KVUE",
+          "ticker": "KVUE",
+          "industry": "Personal Care Products",
+          "weight": 0.1
+        },
+        {
+          "name": "Kimberly-Clark",
+          "label": "KMB",
+          "ticker": "KMB",
+          "industry": "Household Products",
+          "weight": 0.1
+        },
+        {
+          "name": "Kraft Heinz",
+          "label": "KHC",
+          "ticker": "KHC",
+          "industry": "Packaged Foods & Meats",
+          "weight": 0.1
+        },
+        {
+          "name": "Constellation Brands",
+          "label": "STZ",
+          "ticker": "STZ",
+          "industry": "Distillers & Vintners",
+          "weight": 0.1
+        },
+        {
+          "name": "Dollar Tree",
+          "label": "DLTR",
+          "ticker": "DLTR",
+          "industry": "Consumer Staples Merchandise Retail",
+          "weight": 0.04
+        },
+        {
+          "name": "Estée Lauder Companies",
+          "label": "EL",
+          "ticker": "EL",
+          "industry": "Personal Care Products",
+          "weight": 0.04
+        },
+        {
+          "name": "Bunge Global",
+          "label": "BG",
+          "ticker": "BG",
+          "industry": "Agricultural Products & Services",
+          "weight": 0.04
+        },
+        {
+          "name": "Tyson Foods",
+          "label": "TSN",
+          "ticker": "TSN",
+          "industry": "Packaged Foods & Meats",
+          "weight": 0.04
+        },
+        {
+          "name": "Church & Dwight",
+          "label": "CHD",
+          "ticker": "CHD",
+          "industry": "Household Products",
+          "weight": 0.04
+        },
+        {
+          "name": "General Mills",
+          "label": "GIS",
+          "ticker": "GIS",
+          "industry": "Packaged Foods & Meats",
+          "weight": 0.03
+        },
+        {
+          "name": "McCormick & Company",
+          "label": "MKC",
+          "ticker": "MKC",
+          "industry": "Packaged Foods & Meats",
+          "weight": 0.03
+        },
+        {
+          "name": "Hormel Foods",
+          "label": "HRL",
+          "ticker": "HRL",
+          "industry": "Packaged Foods & Meats",
+          "weight": 0.02
+        },
+        {
+          "name": "Clorox",
+          "label": "CLX",
+          "ticker": "CLX",
+          "industry": "Household Products",
+          "weight": 0.02
+        },
+        {
+          "name": "Brown–Forman",
+          "label": "BF-B",
+          "ticker": "BF-B",
+          "industry": "Distillers & Vintners",
+          "weight": 0.02
+        },
+        {
+          "name": "J.M. Smucker Company",
+          "label": "SJM",
+          "ticker": "SJM",
+          "industry": "Packaged Foods & Meats",
+          "weight": 0.02
+        },
+        {
+          "name": "Molson Coors Beverage Company",
+          "label": "TAP",
+          "ticker": "TAP",
+          "industry": "Brewers",
+          "weight": 0.01
+        },
+        {
+          "name": "Conagra Brands",
+          "label": "CAG",
+          "ticker": "CAG",
+          "industry": "Packaged Foods & Meats",
+          "weight": 0.01
+        },
+        {
+          "name": "Campbell Soup Company",
+          "label": "Campbell Soup Company",
+          "ticker": "Campbell Soup Company",
+          "industry": "Other",
+          "weight": 0.01
+        }
+      ]
+    },
+    {
+      "key": "energy",
+      "name": {
+        "en": "Energy",
+        "es": "Energía"
+      },
+      "weight": 4.13,
+      "companies": 22,
+      "color": "#f4c84d",
+      "top": [
+        {
+          "name": "ExxonMobil",
+          "label": "XOM",
+          "ticker": "XOM",
+          "industry": "Integrated Oil & Gas",
+          "weight": 1.2
+        },
+        {
+          "name": "Chevron",
+          "label": "CVX",
+          "ticker": "CVX",
+          "industry": "Integrated Oil & Gas",
+          "weight": 0.7
+        },
+        {
+          "name": "ConocoPhillips",
+          "label": "COP",
+          "ticker": "COP",
+          "industry": "Oil & Gas Exploration & Production",
+          "weight": 0.3
+        },
+        {
+          "name": "Williams Companies",
+          "label": "WMB",
+          "ticker": "WMB",
+          "industry": "Oil & Gas Storage & Transportation",
+          "weight": 0.2
+        },
+        {
+          "name": "EOG Resources",
+          "label": "EOG",
+          "ticker": "EOG",
+          "industry": "Oil & Gas Exploration & Production",
+          "weight": 0.1
+        },
+        {
+          "name": "Schlumberger",
+          "label": "SLB",
+          "ticker": "SLB",
+          "industry": "Oil & Gas Equipment & Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Kinder Morgan",
+          "label": "KMI",
+          "ticker": "KMI",
+          "industry": "Oil & Gas Storage & Transportation",
+          "weight": 0.1
+        },
+        {
+          "name": "Valero Energy",
+          "label": "VLO",
+          "ticker": "VLO",
+          "industry": "Oil & Gas Refining & Marketing",
+          "weight": 0.1
+        },
+        {
+          "name": "Phillips 66",
+          "label": "PSX",
+          "ticker": "PSX",
+          "industry": "Oil & Gas Refining & Marketing",
+          "weight": 0.1
+        },
+        {
+          "name": "Marathon Petroleum",
+          "label": "MPC",
+          "ticker": "MPC",
+          "industry": "Oil & Gas Refining & Marketing",
+          "weight": 0.1
+        },
+        {
+          "name": "Occidental Petroleum",
+          "label": "OXY",
+          "ticker": "OXY",
+          "industry": "Oil & Gas Exploration & Production",
+          "weight": 0.1
+        },
+        {
+          "name": "Baker Hughes",
+          "label": "BKR",
+          "ticker": "BKR",
+          "industry": "Oil & Gas Equipment & Services",
+          "weight": 0.1
+        },
+        {
+          "name": "ONEOK",
+          "label": "OKE",
+          "ticker": "OKE",
+          "industry": "Oil & Gas Storage & Transportation",
+          "weight": 0.1
+        },
+        {
+          "name": "Diamondback Energy",
+          "label": "FANG",
+          "ticker": "FANG",
+          "industry": "Oil & Gas Exploration & Production",
+          "weight": 0.1
+        },
+        {
+          "name": "Targa Resources",
+          "label": "TRGP",
+          "ticker": "TRGP",
+          "industry": "Oil & Gas Storage & Transportation",
+          "weight": 0.1
+        },
+        {
+          "name": "EQT",
+          "label": "EQT",
+          "ticker": "EQT",
+          "industry": "Oil & Gas Exploration & Production",
+          "weight": 0.1
+        },
+        {
+          "name": "Halliburton",
+          "label": "HAL",
+          "ticker": "HAL",
+          "industry": "Oil & Gas Equipment & Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Texas Pacific Land",
+          "label": "TPL",
+          "ticker": "TPL",
+          "industry": "Oil & Gas Exploration & Production",
+          "weight": 0.1
+        },
+        {
+          "name": "Devon Energy",
+          "label": "DVN",
+          "ticker": "DVN",
+          "industry": "Oil & Gas Exploration & Production",
+          "weight": 0.1
+        },
+        {
+          "name": "Coterra",
+          "label": "CTRA",
+          "ticker": "CTRA",
+          "industry": "Oil & Gas Exploration & Production",
+          "weight": 0.1
+        },
+        {
+          "name": "Expand Energy",
+          "label": "EXE",
+          "ticker": "EXE",
+          "industry": "Oil & Gas Exploration & Production",
+          "weight": 0.1
+        },
+        {
+          "name": "APA",
+          "label": "APA",
+          "ticker": "APA",
+          "industry": "Oil & Gas Exploration & Production",
+          "weight": 0.03
+        }
+      ]
+    },
+    {
+      "key": "utilities",
+      "name": {
+        "en": "Utilities",
+        "es": "Utilities"
+      },
+      "weight": 3.12,
+      "companies": 31,
+      "color": "#d8df53",
+      "top": [
+        {
+          "name": "NextEra Energy",
+          "label": "NEE",
+          "ticker": "NEE",
+          "industry": "Multi-Utilities",
+          "weight": 0.3
+        },
+        {
+          "name": "Southern Company",
+          "label": "SO",
+          "ticker": "SO",
+          "industry": "Electric Utilities",
+          "weight": 0.2
+        },
+        {
+          "name": "Constellation Energy",
+          "label": "CEG",
+          "ticker": "CEG",
+          "industry": "Electric Utilities",
+          "weight": 0.2
+        },
+        {
+          "name": "Duke Energy",
+          "label": "DUK",
+          "ticker": "DUK",
+          "industry": "Electric Utilities",
+          "weight": 0.2
+        },
+        {
+          "name": "American Electric Power",
+          "label": "AEP",
+          "ticker": "AEP",
+          "industry": "Electric Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "Sempra",
+          "label": "SRE",
+          "ticker": "SRE",
+          "industry": "Multi-Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "Dominion Energy",
+          "label": "D",
+          "ticker": "D",
+          "industry": "Multi-Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "Entergy",
+          "label": "ETR",
+          "ticker": "ETR",
+          "industry": "Electric Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "Exelon",
+          "label": "EXC",
+          "ticker": "EXC",
+          "industry": "Electric Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "Vistra Corp.",
+          "label": "VST",
+          "ticker": "VST",
+          "industry": "Electric Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "Xcel Energy",
+          "label": "XEL",
+          "ticker": "XEL",
+          "industry": "Multi-Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "Consolidated Edison",
+          "label": "ED",
+          "ticker": "ED",
+          "industry": "Multi-Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "Public Service Enterprise Group",
+          "label": "PEG",
+          "ticker": "PEG",
+          "industry": "Electric Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "PG&E",
+          "label": "PCG",
+          "ticker": "PCG",
+          "industry": "Multi-Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "WEC Energy Group",
+          "label": "WEC",
+          "ticker": "WEC",
+          "industry": "Electric Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "Atmos Energy",
+          "label": "ATO",
+          "ticker": "ATO",
+          "industry": "Gas Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "DTE Energy",
+          "label": "DTE",
+          "ticker": "DTE",
+          "industry": "Multi-Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "Ameren",
+          "label": "AEE",
+          "ticker": "AEE",
+          "industry": "Multi-Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "NRG Energy",
+          "label": "NRG",
+          "ticker": "NRG",
+          "industry": "Independent Power Producers & Energy Traders",
+          "weight": 0.1
+        },
+        {
+          "name": "FirstEnergy",
+          "label": "FE",
+          "ticker": "FE",
+          "industry": "Electric Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "PPL",
+          "label": "PPL",
+          "ticker": "PPL",
+          "industry": "Electric Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "CenterPoint Energy",
+          "label": "CNP",
+          "ticker": "CNP",
+          "industry": "Multi-Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "Edison International",
+          "label": "EIX",
+          "ticker": "EIX",
+          "industry": "Electric Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "American Water Works",
+          "label": "AWK",
+          "ticker": "AWK",
+          "industry": "Water Utilities",
+          "weight": 0.1
+        },
+        {
+          "name": "Eversource Energy",
+          "label": "ES",
+          "ticker": "ES",
+          "industry": "Electric Utilities",
+          "weight": 0.04
+        },
+        {
+          "name": "CMS Energy",
+          "label": "CMS",
+          "ticker": "CMS",
+          "industry": "Multi-Utilities",
+          "weight": 0.04
+        },
+        {
+          "name": "NiSource",
+          "label": "NI",
+          "ticker": "NI",
+          "industry": "Multi-Utilities",
+          "weight": 0.04
+        },
+        {
+          "name": "Evergy",
+          "label": "EVRG",
+          "ticker": "EVRG",
+          "industry": "Electric Utilities",
+          "weight": 0.03
+        },
+        {
+          "name": "Alliant Energy",
+          "label": "LNT",
+          "ticker": "LNT",
+          "industry": "Electric Utilities",
+          "weight": 0.03
+        },
+        {
+          "name": "Pinnacle West",
+          "label": "Pinnacle West",
+          "ticker": "Pinnacle West",
+          "industry": "Other",
+          "weight": 0.02
+        },
+        {
+          "name": "AES",
+          "label": "AES",
+          "ticker": "AES",
+          "industry": "Independent Power Producers & Energy Traders",
+          "weight": 0.02
+        }
+      ]
+    },
+    {
+      "key": "real-estate",
+      "name": {
+        "en": "Real Estate",
+        "es": "Real Estate"
+      },
+      "weight": 2.1,
+      "companies": 29,
+      "color": "#b7ece0",
+      "top": [
+        {
+          "name": "Welltower",
+          "label": "WELL",
+          "ticker": "WELL",
+          "industry": "Health Care REITs",
+          "weight": 0.2
+        },
+        {
+          "name": "Prologis",
+          "label": "PLD",
+          "ticker": "PLD",
+          "industry": "Industrial REITs",
+          "weight": 0.2
+        },
+        {
+          "name": "Equinix",
+          "label": "EQIX",
+          "ticker": "EQIX",
+          "industry": "Data Center REITs",
+          "weight": 0.2
+        },
+        {
+          "name": "American Tower",
+          "label": "AMT",
+          "ticker": "AMT",
+          "industry": "Telecom Tower REITs",
+          "weight": 0.1
+        },
+        {
+          "name": "Digital Realty",
+          "label": "DLR",
+          "ticker": "DLR",
+          "industry": "Data Center REITs",
+          "weight": 0.1
+        },
+        {
+          "name": "Simon Property Group",
+          "label": "SPG",
+          "ticker": "SPG",
+          "industry": "Retail REITs",
+          "weight": 0.1
+        },
+        {
+          "name": "Realty Income",
+          "label": "O",
+          "ticker": "O",
+          "industry": "Retail REITs",
+          "weight": 0.1
+        },
+        {
+          "name": "Public Storage",
+          "label": "PSA",
+          "ticker": "PSA",
+          "industry": "Self-Storage REITs",
+          "weight": 0.1
+        },
+        {
+          "name": "CBRE Group",
+          "label": "CBRE",
+          "ticker": "CBRE",
+          "industry": "Real Estate Services",
+          "weight": 0.1
+        },
+        {
+          "name": "Ventas",
+          "label": "VTR",
+          "ticker": "VTR",
+          "industry": "Health Care REITs",
+          "weight": 0.1
+        },
+        {
+          "name": "Crown Castle",
+          "label": "CCI",
+          "ticker": "CCI",
+          "industry": "Telecom Tower REITs",
+          "weight": 0.1
+        },
+        {
+          "name": "Iron Mountain",
+          "label": "IRM",
+          "ticker": "IRM",
+          "industry": "Other Specialized REITs",
+          "weight": 0.1
+        },
+        {
+          "name": "Vici Properties",
+          "label": "VICI",
+          "ticker": "VICI",
+          "industry": "Hotel & Resort REITs",
+          "weight": 0.1
+        },
+        {
+          "name": "Extra Space Storage",
+          "label": "EXR",
+          "ticker": "EXR",
+          "industry": "Self-Storage REITs",
+          "weight": 0.1
+        },
+        {
+          "name": "AvalonBay Communities",
+          "label": "AVB",
+          "ticker": "AVB",
+          "industry": "Multi-Family Residential REITs",
+          "weight": 0.04
+        },
+        {
+          "name": "Equity Residential",
+          "label": "EQR",
+          "ticker": "EQR",
+          "industry": "Multi-Family Residential REITs",
+          "weight": 0.04
+        },
+        {
+          "name": "SBA Communications",
+          "label": "SBAC",
+          "ticker": "SBAC",
+          "industry": "Telecom Tower REITs",
+          "weight": 0.03
+        },
+        {
+          "name": "Weyerhaeuser",
+          "label": "WY",
+          "ticker": "WY",
+          "industry": "Timber REITs",
+          "weight": 0.03
+        },
+        {
+          "name": "CoStar Group",
+          "label": "CSGP",
+          "ticker": "CSGP",
+          "industry": "Real Estate Services",
+          "weight": 0.03
+        },
+        {
+          "name": "Essex Property Trust",
+          "label": "ESS",
+          "ticker": "ESS",
+          "industry": "Multi-Family Residential REITs",
+          "weight": 0.03
+        },
+        {
+          "name": "Invitation Homes",
+          "label": "INVH",
+          "ticker": "INVH",
+          "industry": "Single-Family Residential REITs",
+          "weight": 0.03
+        },
+        {
+          "name": "Kimco Realty",
+          "label": "KIM",
+          "ticker": "KIM",
+          "industry": "Retail REITs",
+          "weight": 0.03
+        },
+        {
+          "name": "Mid-America Apartment Communities",
+          "label": "MAA",
+          "ticker": "MAA",
+          "industry": "Multi-Family Residential REITs",
+          "weight": 0.02
+        },
+        {
+          "name": "Regency Centers",
+          "label": "REG",
+          "ticker": "REG",
+          "industry": "Retail REITs",
+          "weight": 0.02
+        },
+        {
+          "name": "Host Hotels & Resorts",
+          "label": "HST",
+          "ticker": "HST",
+          "industry": "Hotel & Resort REITs",
+          "weight": 0.02
+        },
+        {
+          "name": "Healthpeak Properties",
+          "label": "DOC",
+          "ticker": "DOC",
+          "industry": "Health Care REITs",
+          "weight": 0.02
+        },
+        {
+          "name": "UDR,",
+          "label": "UDR",
+          "ticker": "UDR",
+          "industry": "Multi-Family Residential REITs",
+          "weight": 0.02
+        },
+        {
+          "name": "Camden Property Trust",
+          "label": "CPT",
+          "ticker": "CPT",
+          "industry": "Multi-Family Residential REITs",
+          "weight": 0.02
+        },
+        {
+          "name": "Federal Realty Investment Trust",
+          "label": "FRT",
+          "ticker": "FRT",
+          "industry": "Retail REITs",
+          "weight": 0.02
+        }
+      ]
+    },
+    {
+      "key": "materials",
+      "name": {
+        "en": "Materials",
+        "es": "Materiales"
+      },
+      "weight": 2.09,
+      "companies": 25,
+      "color": "#ff6767",
+      "top": [
+        {
+          "name": "Linde plc",
+          "label": "LIN",
+          "ticker": "LIN",
+          "industry": "Industrial Gases",
+          "weight": 0.4
+        },
+        {
+          "name": "Newmont",
+          "label": "NEM",
+          "ticker": "NEM",
+          "industry": "Gold",
+          "weight": 0.2
+        },
+        {
+          "name": "Freeport-McMoRan",
+          "label": "FCX",
+          "ticker": "FCX",
+          "industry": "Copper",
+          "weight": 0.1
+        },
+        {
+          "name": "Sherwin-Williams",
+          "label": "SHW",
+          "ticker": "SHW",
+          "industry": "Specialty Chemicals",
+          "weight": 0.1
+        },
+        {
+          "name": "Ecolab",
+          "label": "ECL",
+          "ticker": "ECL",
+          "industry": "Specialty Chemicals",
+          "weight": 0.1
+        },
+        {
+          "name": "CRH plc",
+          "label": "CRH",
+          "ticker": "CRH",
+          "industry": "Construction Materials",
+          "weight": 0.1
+        },
+        {
+          "name": "Air Products",
+          "label": "APD",
+          "ticker": "APD",
+          "industry": "Industrial Gases",
+          "weight": 0.1
+        },
+        {
+          "name": "Corteva",
+          "label": "CTVA",
+          "ticker": "CTVA",
+          "industry": "Fertilizers & Agricultural Chemicals",
+          "weight": 0.1
+        },
+        {
+          "name": "Nucor",
+          "label": "NUE",
+          "ticker": "NUE",
+          "industry": "Steel",
+          "weight": 0.1
+        },
+        {
+          "name": "Vulcan Materials Company",
+          "label": "VMC",
+          "ticker": "VMC",
+          "industry": "Construction Materials",
+          "weight": 0.1
+        },
+        {
+          "name": "Martin Marietta Materials",
+          "label": "MLM",
+          "ticker": "MLM",
+          "industry": "Construction Materials",
+          "weight": 0.1
+        },
+        {
+          "name": "Dow",
+          "label": "DOW",
+          "ticker": "DOW",
+          "industry": "Commodity Chemicals",
+          "weight": 0.1
+        },
+        {
+          "name": "LyondellBasell",
+          "label": "LYB",
+          "ticker": "LYB",
+          "industry": "Specialty Chemicals",
+          "weight": 0.1
+        },
+        {
+          "name": "Steel Dynamics",
+          "label": "STLD",
+          "ticker": "STLD",
+          "industry": "Steel",
+          "weight": 0.04
+        },
+        {
+          "name": "PPG Industries",
+          "label": "PPG",
+          "ticker": "PPG",
+          "industry": "Specialty Chemicals",
+          "weight": 0.04
+        },
+        {
+          "name": "CF Industries",
+          "label": "CF",
+          "ticker": "CF",
+          "industry": "Fertilizers & Agricultural Chemicals",
+          "weight": 0.04
+        },
+        {
+          "name": "Albemarle",
+          "label": "ALB",
+          "ticker": "ALB",
+          "industry": "Specialty Chemicals",
+          "weight": 0.04
+        },
+        {
+          "name": "Smurfit WestRock",
+          "label": "SW",
+          "ticker": "SW",
+          "industry": "Paper & Plastic Packaging Products & Materials",
+          "weight": 0.03
+        },
+        {
+          "name": "Packaging Corporation of America",
+          "label": "PKG",
+          "ticker": "PKG",
+          "industry": "Paper & Plastic Packaging Products & Materials",
+          "weight": 0.03
+        },
+        {
+          "name": "International Paper",
+          "label": "IP",
+          "ticker": "IP",
+          "industry": "Paper & Plastic Packaging Products & Materials",
+          "weight": 0.03
+        },
+        {
+          "name": "International Flavors & Fragrances",
+          "label": "IFF",
+          "ticker": "IFF",
+          "industry": "Specialty Chemicals",
+          "weight": 0.03
+        },
+        {
+          "name": "DuPont",
+          "label": "DD",
+          "ticker": "DD",
+          "industry": "Specialty Chemicals",
+          "weight": 0.03
+        },
+        {
+          "name": "Amcor",
+          "label": "AMCR",
+          "ticker": "AMCR",
+          "industry": "Paper & Plastic Packaging Products & Materials",
+          "weight": 0.03
+        },
+        {
+          "name": "Ball",
+          "label": "BALL",
+          "ticker": "BALL",
+          "industry": "Metal, Glass & Plastic Containers",
+          "weight": 0.03
+        },
+        {
+          "name": "Avery Dennison",
+          "label": "AVY",
+          "ticker": "AVY",
+          "industry": "Paper & Plastic Packaging Products & Materials",
+          "weight": 0.02
+        }
+      ]
+    }
+  ]
+}
