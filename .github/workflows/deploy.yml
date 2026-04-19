@@ -31,14 +31,14 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Install dependencies
+      - name: Install root dependencies
         run: npm ci
 
-      - name: Build data
-        run: npm run build:data
+      - name: Install composition dependencies
+        run: npm -C composition ci
 
-      - name: Build site
-        run: npm run build
+      - name: Build all pages
+        run: npm run build:pages
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

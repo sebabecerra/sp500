@@ -1,0 +1,28 @@
+{
+  "name": "sp500-composition",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build:data": "node ./scripts/build-data.mjs",
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "d3-dsv": "^3.0.1",
+    "d3-hierarchy": "^3.1.2",
+    "html-to-image": "^1.11.13",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@types/d3-hierarchy": "^3.1.7",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "playwright": "^1.59.1",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.2"
+  }
+}

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>S&P 500 Projects</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #090807;
+        --panel: #151210;
+        --border: rgba(255, 214, 92, 0.18);
+        --text: #f7f2ea;
+        --muted: rgba(247, 242, 234, 0.7);
+        --accent: #ffd65c;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top, rgba(255, 214, 92, 0.08), transparent 30%),
+          linear-gradient(180deg, #120f0d 0%, var(--bg) 100%);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 56px 24px 72px;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2.2rem, 5vw, 4rem);
+        line-height: 0.95;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 18px;
+        margin-top: 34px;
+      }
+
+      .card {
+        display: block;
+        padding: 22px;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+        color: inherit;
+        text-decoration: none;
+        transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255, 214, 92, 0.38);
+        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 10px;
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .title {
+        margin: 0 0 8px;
+        font-size: 1.45rem;
+        font-weight: 800;
+      }
+
+      .path {
+        margin-top: 14px;
+        color: var(--accent);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <span class="eyebrow">S&amp;P 500</span>
+      <h1>Project Index</h1>
+      <p>Separate pages for each S&amp;P 500 graphic published from one repo.</p>
+
+      <section class="grid" aria-label="S&P 500 charts">
+        <a class="card" href="./market-map/">
+          <span class="eyebrow">Composition</span>
+          <h2 class="title">Market Map</h2>
+          <p>Sector and company composition map built from the notebook CSV pipeline.</p>
+          <div class="path">/sp500/market-map/</div>
+        </a>
+
+        <a class="card" href="./composition/">
+          <span class="eyebrow">Poster Variants</span>
+          <h2 class="title">Composition</h2>
+          <p>Treemap, marimekko, and composition-style views for the S&amp;P 500.</p>
+          <div class="path">/sp500/composition/</div>
+        </a>
+      </section>
+    </main>
+  </body>
+  </html>
