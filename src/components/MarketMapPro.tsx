@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { hierarchy, treemap, type HierarchyRectangularNode } from 'd3-hierarchy'
 import type { Bubble, Locale, Sector } from '../types'
 import MarketToolbar from './MarketToolbar'
@@ -36,6 +36,10 @@ type RootNode = {
 const WIDTH = 1440
 const HEIGHT = 900
 const PAD = 12
+const TOOLTIP_WIDTH = 220
+const TOOLTIP_HEIGHT = 148
+const TOOLTIP_OFFSET = 16
+const TOOLTIP_MARGIN = 12
 
 function groupBy<T>(items: T[], getKey: (item: T) => string) {
   return items.reduce<Record<string, T[]>>((acc, item) => {
@@ -159,6 +163,7 @@ export default function MarketMapPro({ sectors, locale }: Props) {
   const [search, setSearch] = useState('')
   const [selectedSector, setSelectedSector] = useState<string | null>(null)
   const [hoveredCompany, setHoveredCompany] = useState<CompanyNode | null>(null)
+  const chartRef = useRef<HTMLDivElement | null>(null)
   const [tooltip, setTooltip] = useState<{
     x: number
     y: number
@@ -191,6 +196,29 @@ export default function MarketMapPro({ sectors, locale }: Props) {
 
   const sectorNodes = layoutRoot.children ?? []
   const activeCompany = hoveredCompany
+
+  const positionTooltip = (clientX: number, clientY: number, company: CompanyNode) => {
+    const bounds = chartRef.current?.getBoundingClientRect()
+
+    if (!bounds) return
+
+    let x = clientX + TOOLTIP_OFFSET
+    let y = clientY + TOOLTIP_OFFSET
+
+    if (x + TOOLTIP_WIDTH > bounds.right - TOOLTIP_MARGIN) {
+      x = clientX - TOOLTIP_WIDTH - TOOLTIP_OFFSET
+    }
+
+    if (y + TOOLTIP_HEIGHT > bounds.bottom - TOOLTIP_MARGIN) {
+      y = clientY - TOOLTIP_HEIGHT - TOOLTIP_OFFSET
+    }
+
+    x = clamp(x, bounds.left + TOOLTIP_MARGIN, bounds.right - TOOLTIP_WIDTH - TOOLTIP_MARGIN)
+    y = clamp(y, bounds.top + TOOLTIP_MARGIN, bounds.bottom - TOOLTIP_HEIGHT - TOOLTIP_MARGIN)
+
+    setTooltip({ x, y, company })
+  }
+
   return (
     <div>
       <div
@@ -211,6 +239,7 @@ export default function MarketMapPro({ sectors, locale }: Props) {
       </div>
 
       <div
+        ref={chartRef}
         style={{
           position: 'relative',
           background: '#0b0b0b',
@@ -345,18 +374,9 @@ export default function MarketMapPro({ sectors, locale }: Props) {
                                   )
                                   setTooltip(null)
                                 }}
-                          onMouseMove={(event) => {
-                            const bounds =
-                              event.currentTarget.ownerSVGElement?.getBoundingClientRect()
-
-                                if (!bounds) return
-
-                                setTooltip({
-                                  x: event.clientX + 16,
-                                  y: event.clientY + 16,
-                                  company,
-                                })
-                              }}
+                                onMouseMove={(event) => {
+                                  positionTooltip(event.clientX, event.clientY, company)
+                                }}
                           style={{
                             cursor: 'pointer',
                             transition: 'transform 140ms ease, opacity 140ms ease',
@@ -442,7 +462,7 @@ export default function MarketMapPro({ sectors, locale }: Props) {
               border: '1px solid rgba(255,255,255,0.10)',
               borderRadius: 10,
               padding: '10px 12px',
-              minWidth: 170,
+              width: TOOLTIP_WIDTH,
               boxShadow: '0 12px 28px rgba(0,0,0,0.28)',
               zIndex: 9999,
             }}
