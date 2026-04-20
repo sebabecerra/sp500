@@ -2,12 +2,15 @@
 
 import { useMemo, useRef, useState } from 'react'
 import { hierarchy, treemap, type HierarchyRectangularNode } from 'd3-hierarchy'
-import type { Bubble, Locale, Sector } from '../types'
+import type { Bubble, Locale, Sector, ViewMode } from '../types'
 import MarketToolbar from './MarketToolbar'
 
 type Props = {
   sectors: Sector[]
   locale: Locale
+  viewMode: ViewMode
+  availableModes: ViewMode[]
+  onViewModeChange: (mode: ViewMode) => void
 }
 
 type CompanyNode = Bubble & {
@@ -50,21 +53,26 @@ function groupBy<T>(items: T[], getKey: (item: T) => string) {
   }, {})
 }
 
-function getHeatColor(change: number | undefined, sectorColor: string) {
-  if (typeof change !== 'number' || !Number.isFinite(change)) {
+function getPerformanceColor(value: number | undefined, sectorColor: string, viewMode: ViewMode) {
+  if (viewMode === 'weight') {
     return sectorColor
   }
 
-  const magnitude = Math.min(Math.abs(change) / 8, 1)
-
-  if (change > 0) {
-    const alpha = 0.55 + magnitude * 0.45
-    return `rgba(22, 214, 106, ${alpha})`
+  if (typeof value !== 'number' || !Number.isFinite(value)) {
+    return 'rgba(148, 163, 184, 0.48)'
   }
 
-  if (change < 0) {
-    const alpha = 0.55 + magnitude * 0.45
-    return `rgba(255, 84, 84, ${alpha})`
+  const scale = viewMode === '1d' ? 8 : viewMode === 'ytd' ? 35 : viewMode === '1y' ? 60 : viewMode === '5y' ? 150 : 250
+  const magnitude = Math.min(Math.abs(value) / scale, 1)
+
+  if (value > 0) {
+    const alpha = 0.68 + magnitude * 0.32
+    return `rgba(0, 255, 102, ${alpha})`
+  }
+
+  if (value < 0) {
+    const alpha = 0.68 + magnitude * 0.32
+    return `rgba(255, 38, 38, ${alpha})`
   }
 
   return 'rgba(148, 163, 184, 0.72)'
@@ -72,6 +80,29 @@ function getHeatColor(change: number | undefined, sectorColor: string) {
 
 function formatChange(value: number) {
   return `${value > 0 ? '+' : ''}${value.toFixed(2)}%`
+}
+
+function getMetricValue(company: Bubble, mode: ViewMode) {
+  switch (mode) {
+    case '1d':
+      return company.return1d ?? company.change
+    case 'ytd':
+      return company.returnYtd
+    case '1y':
+      return company.return1y
+    case '5y':
+      return company.return5y
+    case '10y':
+      return company.return10y
+    default:
+      return company.weight
+  }
+}
+
+function formatMetricValue(company: Bubble, mode: ViewMode) {
+  const value = getMetricValue(company, mode)
+  if (typeof value !== 'number' || !Number.isFinite(value)) return null
+  return mode === 'weight' ? `${value.toFixed(2)}%` : formatChange(value)
 }
 
 function clamp(value: number, min: number, max: number) {
@@ -159,7 +190,7 @@ function filterSectors(
   return buildTree(filtered, locale)
 }
 
-export default function MarketMapPro({ sectors, locale }: Props) {
+export default function MarketMapPro({ sectors, locale, viewMode, availableModes, onViewModeChange }: Props) {
   const [search, setSearch] = useState('')
   const [selectedSector, setSelectedSector] = useState<string | null>(null)
   const [hoveredCompany, setHoveredCompany] = useState<CompanyNode | null>(null)
@@ -231,10 +262,14 @@ export default function MarketMapPro({ sectors, locale }: Props) {
         }}
       >
         <MarketToolbar
+          locale={locale}
           search={search}
           onSearchChange={setSearch}
           selectedSector={selectedSector}
           onClearSector={() => setSelectedSector(null)}
+          viewMode={viewMode}
+          availableModes={availableModes}
+          onViewModeChange={onViewModeChange}
         />
       </div>
 
@@ -329,8 +364,8 @@ export default function MarketMapPro({ sectors, locale }: Props) {
                             const ch = companyNode.y1 - companyNode.y0
                             const label = company.ticker || company.label || company.name
                             const showPrimary = cw > 34 && ch > 16
-                            const showWeight = cw > 58 && ch > 26
-                            const showChange = typeof company.change === 'number' && cw > 84 && ch > 48
+                            const metricText = formatMetricValue(company, viewMode)
+                            const showMetric = metricText !== null && cw > 58 && ch > 26
                             const isActive =
                               activeCompany?.ticker === company.ticker &&
                               activeCompany?.industry === company.industry
@@ -342,24 +377,15 @@ export default function MarketMapPro({ sectors, locale }: Props) {
                               heightFactor: 0.34,
                               charFactor: 0.72,
                             })
-                            const weightFontSize = fitFontSize(`${company.weight.toFixed(2)}%`, cw - 8, ch, {
+                            const weightFontSize = fitFontSize(metricText ?? '', cw - 8, ch, {
                               min: 8,
                               max: 16,
                               widthFactor: 1.05,
                               heightFactor: 0.18,
                               charFactor: 0.62,
                             })
-                            const changeFontSize = fitFontSize(formatChange(company.change ?? 0), cw - 8, ch, {
-                              min: 8,
-                              max: 15,
-                              widthFactor: 1.0,
-                              heightFactor: 0.16,
-                              charFactor: 0.64,
-                            })
-
                             const tickerY = 6 + tickerFontSize
                             const weightY = tickerY + Math.max(10, weightFontSize + 4)
-                            const changeY = weightY + Math.max(10, changeFontSize + 4)
 
                             return (
                               <g
@@ -387,7 +413,7 @@ export default function MarketMapPro({ sectors, locale }: Props) {
                                   y="0"
                                   width={cw}
                                   height={ch}
-                                  fill={getHeatColor(company.change, sector.color)}
+                                  fill={getPerformanceColor(getMetricValue(company, viewMode), sector.color, viewMode)}
                                   stroke={
                                     isActive
                                       ? 'rgba(255,255,255,0.85)'
@@ -414,7 +440,7 @@ export default function MarketMapPro({ sectors, locale }: Props) {
                                   </text>
                                 ) : null}
 
-                                {showWeight ? (
+                                {showMetric ? (
                                   <text
                                     x="4"
                                     y={weightY}
@@ -423,22 +449,10 @@ export default function MarketMapPro({ sectors, locale }: Props) {
                                     fontWeight="800"
                                     style={{ pointerEvents: 'none' }}
                                   >
-                                    {company.weight.toFixed(2)}%
+                                    {metricText}
                                   </text>
                                 ) : null}
 
-                                {showChange ? (
-                                  <text
-                                    x="4"
-                                    y={changeY}
-                                    fill="#111111"
-                                    fontSize={changeFontSize}
-                                    fontWeight="700"
-                                    style={{ pointerEvents: 'none' }}
-                                  >
-                                    {formatChange(company.change!)}
-                                  </text>
-                                ) : null}
                               </g>
                             )
                           })}
@@ -482,11 +496,11 @@ export default function MarketMapPro({ sectors, locale }: Props) {
             <div style={{ color: 'white', fontSize: 12, fontWeight: 700, marginTop: 6 }}>
               <strong>Weight:</strong> {tooltip.company.weight.toFixed(2)}%
             </div>
-            {typeof tooltip.company.change === 'number' ? (
+            {viewMode !== 'weight' && formatMetricValue(tooltip.company, viewMode) ? (
               <div
                 style={{
                   color:
-                    tooltip.company.change >= 0
+                    (getMetricValue(tooltip.company, viewMode) ?? 0) >= 0
                       ? 'rgb(74, 222, 128)'
                       : 'rgb(248, 113, 113)',
                   fontSize: 12,
@@ -494,7 +508,7 @@ export default function MarketMapPro({ sectors, locale }: Props) {
                   marginTop: 6,
                 }}
               >
-                {formatChange(tooltip.company.change)}
+                {formatMetricValue(tooltip.company, viewMode)}
               </div>
             ) : null}
           </div>

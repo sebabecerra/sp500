@@ -8,3 +8,9 @@ dist/
 # local raw/source artifacts not needed in most commits
 DCOILWTICO.txt
 plotly-2.35.2.min.js
+
+# local notebook artifacts
+.DS_Store
+__pycache__/
+scripts/__pycache__/
+data/manual/notebook/sp500_timeseries_15y_long.csv

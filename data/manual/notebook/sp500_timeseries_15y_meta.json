@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-04-20T20:25:25.929221+00:00",
+  "source": "Current S&P 500 constituents from Wikipedia",
+  "sourceUrl": "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies",
+  "period": "15y",
+  "interval": "1d",
+  "autoAdjust": true,
+  "tickersRequested": 503,
+  "tickersReturned": 503,
+  "missingTickers": [],
+  "wideShape": [
+    3770,
+    503
+  ],
+  "longShape": [
+    1800229,
+    6
+  ],
+  "note": "Current constituents with backward-looking adjusted price history. This is not historical point-in-time index membership."
+}

@@ -1,4 +1,5 @@
 export type Locale = 'en' | 'es'
+export type ViewMode = 'weight' | '1d' | 'ytd' | '1y' | '5y' | '10y'
 
 export type Bubble = {
   name: string
@@ -7,6 +8,11 @@ export type Bubble = {
   industry?: string
   ticker?: string
   change?: number
+  return1d?: number
+  returnYtd?: number
+  return1y?: number
+  return5y?: number
+  return10y?: number
 }
 
 export type Sector = {
@@ -29,5 +35,6 @@ export type Payload = {
   note: { en: string; es: string }
   source: { name: string; url: string }
   totalMarketCap: string
+  availableModes?: ViewMode[]
   sectors: Sector[]
 }

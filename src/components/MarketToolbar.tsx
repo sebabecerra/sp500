@@ -1,25 +1,55 @@
 'use client'
 
 import type { CSSProperties } from 'react'
+import type { Locale, ViewMode } from '../types'
 
 type Props = {
+  locale: Locale
   search: string
   onSearchChange: (value: string) => void
   selectedSector: string | null
   onClearSector: () => void
+  viewMode: ViewMode
+  availableModes: ViewMode[]
+  onViewModeChange: (mode: ViewMode) => void
 }
 
 export default function MarketToolbar({
+  locale,
   search,
   onSearchChange,
   selectedSector,
   onClearSector,
+  viewMode,
+  availableModes,
+  onViewModeChange,
 }: Props) {
+  const modeLabels: Record<Locale, Record<ViewMode, string>> = {
+    en: {
+      weight: 'Weight',
+      '1d': '1D',
+      ytd: 'YTD',
+      '1y': '1Y',
+      '5y': '5Y',
+      '10y': '10Y',
+    },
+    es: {
+      weight: 'Peso',
+      '1d': '1D',
+      ytd: 'YTD',
+      '1y': '1A',
+      '5y': '5A',
+      '10y': '10A',
+    },
+  }
+
+  const modes: ViewMode[] = ['weight', '1d', 'ytd', '1y', '5y', '10y']
+
   return (
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: 'minmax(260px, 420px) auto',
+        gridTemplateColumns: 'minmax(240px, 380px) minmax(0, 1fr) auto',
         gap: 14,
         alignItems: 'center',
       }}
@@ -39,6 +69,26 @@ export default function MarketToolbar({
           fontSize: 14,
         }}
       />
+
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
+        {modes.map((mode) => {
+          const enabled = availableModes.includes(mode)
+          return (
+            <button
+              key={mode}
+              onClick={() => enabled && onViewModeChange(mode)}
+              disabled={!enabled}
+              style={{
+                ...buttonStyle(viewMode === mode),
+                opacity: enabled ? 1 : 0.38,
+                cursor: enabled ? 'pointer' : 'default',
+              }}
+            >
+              {modeLabels[locale][mode]}
+            </button>
+          )
+        })}
+      </div>
 
       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
         <button

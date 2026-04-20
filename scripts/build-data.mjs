@@ -10,6 +10,8 @@ const outputDir = resolve(root, 'public/data')
 const rawOutputDir = resolve(root, 'public/raw')
 
 const csvCandidates = [
+  resolve(root, 'data/manual/notebook/sp500_market_map_returns.csv'),
+  resolve(root, 'data/manual/sp500_market_map_returns.csv'),
   resolve(root, 'data/manual/notebook/sp500_companies_wiki_yfinance.csv'),
   resolve(root, 'data/manual/sp500_companies_wiki_yfinance.csv'),
 ]
@@ -60,6 +62,11 @@ const companies = rows
     const weightValue = parseNumber(row.weight)
     const marketCap = parseNumber(row.marketCap)
     const changeValue = parseNumber(row.change)
+    const return1dValue = parseNumber(row.return_1d ?? row.return1d)
+    const returnYtdValue = parseNumber(row.return_ytd ?? row.returnYtd)
+    const return1yValue = parseNumber(row.return_1y ?? row.return1y)
+    const return5yValue = parseNumber(row.return_5y ?? row.return5y)
+    const return10yValue = parseNumber(row.return_10y ?? row.return10y)
 
     if (!ticker || !name || !sector) return null
 
@@ -71,6 +78,15 @@ const companies = rows
       marketCap: isFinitePositive(marketCap) ? marketCap : null,
       weight: Number.isFinite(weightValue) && weightValue > 0 ? weightValue : null,
       change: Number.isFinite(changeValue) ? changeValue : undefined,
+      return1d: Number.isFinite(return1dValue)
+        ? return1dValue
+        : Number.isFinite(changeValue)
+          ? changeValue
+          : undefined,
+      returnYtd: Number.isFinite(returnYtdValue) ? returnYtdValue : undefined,
+      return1y: Number.isFinite(return1yValue) ? return1yValue : undefined,
+      return5y: Number.isFinite(return5yValue) ? return5yValue : undefined,
+      return10y: Number.isFinite(return10yValue) ? return10yValue : undefined,
     }
   })
   .filter(Boolean)
@@ -109,14 +125,19 @@ for (const company of companies) {
     })
   }
 
-  grouped.get(company.sector).companies.push({
-    name: company.name,
-    label: company.ticker,
-    ticker: company.ticker,
-    industry: company.industry,
-    change: company.change,
-    weight: Number(weight.toFixed(4)),
-  })
+      grouped.get(company.sector).companies.push({
+        name: company.name,
+        label: company.ticker,
+        ticker: company.ticker,
+        industry: company.industry,
+        change: company.change,
+        return1d: company.return1d,
+        returnYtd: company.returnYtd,
+        return1y: company.return1y,
+        return5y: company.return5y,
+        return10y: company.return10y,
+        weight: Number(weight.toFixed(4)),
+      })
 }
 
 const sectors = [...grouped.values()]
@@ -147,16 +168,24 @@ const payload = {
     es: 'Esta app lee un solo CSV exportado desde el notebook. Si el CSV ya incluye pesos por compañía, se usan directo; si no, los pesos se recalculan desde la capitalización de mercado.',
   },
   source: {
-    name: 'Notebook CSV: sp500_companies_wiki_yfinance.csv',
-    url: './raw/sp500_companies_wiki_yfinance.csv',
+    name: `Notebook CSV: ${csvPath.split('/').pop()}`,
+    url: `./raw/${csvPath.split('/').pop()}`,
   },
   totalMarketCap: isFinitePositive(totalMarketCap) ? formatTrillions(totalMarketCap) : 'N/A',
+  availableModes: [
+    'weight',
+    companies.some((company) => company.return1d !== undefined) ? '1d' : null,
+    companies.some((company) => company.returnYtd !== undefined) ? 'ytd' : null,
+    companies.some((company) => company.return1y !== undefined) ? '1y' : null,
+    companies.some((company) => company.return5y !== undefined) ? '5y' : null,
+    companies.some((company) => company.return10y !== undefined) ? '10y' : null,
+  ].filter(Boolean),
   sectors,
 }
 
 await mkdir(outputDir, { recursive: true })
 await mkdir(rawOutputDir, { recursive: true })
-await copyFile(csvPath, resolve(rawOutputDir, 'sp500_companies_wiki_yfinance.csv'))
+await copyFile(csvPath, resolve(rawOutputDir, csvPath.split('/').pop()))
 await writeFile(resolve(outputDir, 'sp500-market-map.json'), JSON.stringify(payload, null, 2), 'utf8')
 
 console.log(

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { toBlob } from 'html-to-image'
 import MarketMapPro from './components/MarketMapPro'
-import type { Locale, Payload } from './types'
+import type { Locale, Payload, ViewMode } from './types'
 
 const copy = {
   en: {
@@ -43,6 +43,7 @@ export default function App() {
   const [locale, setLocale] = useState<Locale>('en')
   const [data, setData] = useState<Payload | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [viewMode, setViewMode] = useState<ViewMode>('weight')
   const cardRef = useRef<HTMLElement | null>(null)
   const labels = copy[locale]
 
@@ -53,6 +54,10 @@ export default function App() {
         if (!response.ok) throw new Error(`HTTP ${response.status}`)
         const payload = (await response.json()) as Payload
         setData(payload)
+        const availableModes = payload.availableModes ?? ['weight']
+        if (availableModes.length) {
+          setViewMode((current) => (availableModes.includes(current) ? current : availableModes[0]))
+        }
       } catch (err) {
         setError(err instanceof Error ? err.message : String(err))
       }
@@ -96,7 +101,13 @@ export default function App() {
 
         {data ? (
           <>
-            <MarketMapPro sectors={data.sectors} locale={locale} />
+            <MarketMapPro
+              sectors={data.sectors}
+              locale={locale}
+              viewMode={viewMode}
+              availableModes={data.availableModes ?? ['weight']}
+              onViewModeChange={setViewMode}
+            />
             <div className="footer-note">
               <div><strong>{labels.note}:</strong> {data.note[locale]}</div>
               <div><strong>{labels.source}:</strong> <a href={data.source.url} target="_blank" rel="noreferrer">{data.source.name}</a></div>
