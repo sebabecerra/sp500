@@ -12,6 +12,18 @@ type Props = {
   viewMode: ViewMode
   availableModes: ViewMode[]
   onViewModeChange: (mode: ViewMode) => void
+  visibleModes?: ViewMode[]
+  modeOverrides?: Partial<
+    Record<
+      ViewMode,
+      {
+        label?: string
+        enabled?: boolean
+        active?: boolean
+        onClick?: () => void
+      }
+    >
+  >
 }
 
 export default function MarketToolbar({
@@ -23,6 +35,8 @@ export default function MarketToolbar({
   viewMode,
   availableModes,
   onViewModeChange,
+  visibleModes,
+  modeOverrides,
 }: Props) {
   const modeLabels: Record<Locale, Record<ViewMode, string>> = {
     en: {
@@ -43,7 +57,7 @@ export default function MarketToolbar({
     },
   }
 
-  const modes: ViewMode[] = ['weight', '1d', 'ytd', '1y', '5y', '10y']
+  const modes: ViewMode[] = visibleModes ?? ['weight', '1d', 'ytd', '1y', '5y', '10y']
 
   return (
     <div
@@ -72,19 +86,28 @@ export default function MarketToolbar({
 
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
         {modes.map((mode) => {
-          const enabled = availableModes.includes(mode)
+          const override = modeOverrides?.[mode]
+          const enabled = override?.enabled ?? availableModes.includes(mode)
+          const active = override?.active ?? viewMode === mode
           return (
             <button
               key={mode}
-              onClick={() => enabled && onViewModeChange(mode)}
+              onClick={() => {
+                if (!enabled) return
+                if (override?.onClick) {
+                  override.onClick()
+                  return
+                }
+                onViewModeChange(mode)
+              }}
               disabled={!enabled}
               style={{
-                ...buttonStyle(viewMode === mode),
+                ...buttonStyle(active),
                 opacity: enabled ? 1 : 0.38,
                 cursor: enabled ? 'pointer' : 'default',
               }}
             >
-              {modeLabels[locale][mode]}
+              {override?.label ?? modeLabels[locale][mode]}
             </button>
           )
         })}

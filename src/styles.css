@@ -25,6 +25,10 @@ a { color: #f3c557; }
   box-shadow: 0 22px 60px rgba(0,0,0,0.35);
 }
 
+.panel + .panel {
+  margin-top: 18px;
+}
+
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -38,6 +42,14 @@ a { color: #f3c557; }
   color: #ffcc57;
   font-size: 2rem;
   line-height: 1.05;
+}
+
+.byline {
+  margin-top: 8px;
+  color: rgba(255,255,255,0.62);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
 }
 
 .topbar p, .footer-note {
@@ -104,3 +116,148 @@ a { color: #f3c557; }
 .mekko-micro { fill: rgba(24,19,18,0.82); font: 700 9px Inter, sans-serif; }
 .source-line { fill: rgba(255,255,255,0.62); font: 500 11px Inter, sans-serif; }
 .footer-note { margin-top: 10px; line-height: 1.5; }
+
+.intro-card {
+  max-width: 1240px;
+  padding-bottom: 18px;
+}
+
+.chart-card {
+  max-width: 1240px;
+  padding-top: 18px;
+}
+
+.chart-inner {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.quick-guide {
+  margin: 10px 0 16px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,204,87,0.08), rgba(255,255,255,0.02));
+}
+
+.quick-guide-title {
+  margin-bottom: 10px;
+  color: #ffcc57;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.quick-guide-items {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px 14px;
+}
+
+.quick-guide-item {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.article-card {
+  max-width: 1240px;
+  padding: 24px 26px 28px;
+}
+
+.article-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.article-intro {
+  margin: 0 0 18px;
+  color: rgba(255,255,255,0.76);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.article-section {
+  padding-top: 6px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.article-section h3 {
+  margin: 0 0 8px;
+  color: #ffcc57;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.article-section p {
+  margin: 0 0 10px;
+  color: rgba(255,255,255,0.76);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.formula-block {
+  margin: 14px 0 8px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255,204,87,0.18);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,204,87,0.06), rgba(255,255,255,0.02));
+}
+
+.formula-expression {
+  color: #ffcc57;
+  font-family: "Times New Roman", Georgia, "Cambria Math", serif;
+  font-size: 1.18rem;
+  font-weight: 600;
+  line-height: 1.6;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.math-var {
+  font-style: italic;
+}
+
+.math-frac {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  margin: 0 0.18em;
+  min-width: 5.2em;
+}
+
+.math-num,
+.math-den {
+  display: block;
+  padding: 0 0.25em;
+  text-align: center;
+}
+
+.math-num {
+  border-bottom: 1px solid rgba(255, 204, 87, 0.7);
+  padding-bottom: 0.08em;
+}
+
+.math-den {
+  padding-top: 0.08em;
+}
+
+.formula-note {
+  margin-top: 8px;
+  color: rgba(255,255,255,0.68);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 860px) {
+  .quick-guide-items {
+    grid-template-columns: 1fr;
+  }
+
+  .article-card {
+    padding: 20px 18px 22px;
+  }
+
+}

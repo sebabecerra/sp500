@@ -11,6 +11,18 @@ type Props = {
   viewMode: ViewMode
   availableModes: ViewMode[]
   onViewModeChange: (mode: ViewMode) => void
+  visibleModes?: ViewMode[]
+  modeOverrides?: Partial<
+    Record<
+      ViewMode,
+      {
+        label?: string
+        enabled?: boolean
+        active?: boolean
+        onClick?: () => void
+      }
+    >
+  >
 }
 
 type CompanyNode = Bubble & {
@@ -190,7 +202,15 @@ function filterSectors(
   return buildTree(filtered, locale)
 }
 
-export default function MarketMapPro({ sectors, locale, viewMode, availableModes, onViewModeChange }: Props) {
+export default function MarketMapPro({
+  sectors,
+  locale,
+  viewMode,
+  availableModes,
+  onViewModeChange,
+  visibleModes,
+  modeOverrides,
+}: Props) {
   const [search, setSearch] = useState('')
   const [selectedSector, setSelectedSector] = useState<string | null>(null)
   const [hoveredCompany, setHoveredCompany] = useState<CompanyNode | null>(null)
@@ -270,6 +290,8 @@ export default function MarketMapPro({ sectors, locale, viewMode, availableModes
           viewMode={viewMode}
           availableModes={availableModes}
           onViewModeChange={onViewModeChange}
+          visibleModes={visibleModes}
+          modeOverrides={modeOverrides}
         />
       </div>
 
@@ -302,166 +324,166 @@ export default function MarketMapPro({ sectors, locale, viewMode, availableModes
                 const w = sectorNode.x1 - sectorNode.x0
                 const h = sectorNode.y1 - sectorNode.y0
                 const sectorIsFocused = !selectedSector || selectedSector === sector.key
+                const sectorWeight = (sectorNode.value ?? 0).toFixed(1)
 
                 return (
                   <g key={sector.key} transform={`translate(${sectorNode.x0}, ${sectorNode.y0})`}>
-                    <rect
-                      x="0"
-                      y="0"
-                      width={w}
-                      height={h}
-                      fill={sector.color}
-                      fillOpacity={sectorIsFocused ? 0.2 : 0.09}
-                      stroke="rgba(255,255,255,0.16)"
-                      style={{ cursor: 'pointer', transition: 'all 180ms ease' }}
-                      onClick={() => {
-                        if (selectedSector === sector.key) {
-                          setSelectedSector(null)
-                        } else {
-                          setSelectedSector(sector.key)
-                        }
-                      }}
-                    />
+                  <rect
+                    x="0"
+                    y="0"
+                    width={w}
+                    height={h}
+                    fill={sector.color}
+                    fillOpacity={sectorIsFocused ? 0.2 : 0.09}
+                    stroke="rgba(255,255,255,0.16)"
+                    style={{ cursor: 'pointer', transition: 'all 180ms ease' }}
+                    onClick={() => {
+                      if (selectedSector === sector.key) {
+                        setSelectedSector(null)
+                      } else {
+                        setSelectedSector(sector.key)
+                      }
+                    }}
+                  />
 
-                    <text
-                      x="6"
-                      y="14"
-                      fill="#ffffff"
-                      fontSize="12"
-                      fontWeight="900"
-                      style={{ pointerEvents: 'none' }}
+                  <text
+                    x="6"
+                    y="14"
+                    fill="#ffffff"
+                    fontSize="12"
+                    fontWeight="900"
+                    style={{ pointerEvents: 'none' }}
                     >
-                      {sector.name.toUpperCase()}
+                      {`${sector.name.toUpperCase()} (${sectorWeight}%)`}
                     </text>
 
-                    {(sectorNode.children ?? []).map((industryNode) => {
-                      const industry = industryNode.data as IndustryNode
-                      const ix = industryNode.x0 - sectorNode.x0
-                      const iy = industryNode.y0 - sectorNode.y0
-                      const iw = industryNode.x1 - industryNode.x0
-                      const ih = industryNode.y1 - industryNode.y0
+                  {(sectorNode.children ?? []).map((industryNode) => {
+                    const industry = industryNode.data as IndustryNode
+                    const ix = industryNode.x0 - sectorNode.x0
+                    const iy = industryNode.y0 - sectorNode.y0
+                    const iw = industryNode.x1 - industryNode.x0
+                    const ih = industryNode.y1 - industryNode.y0
 
-                      return (
-                        <g key={`${sector.key}-${industry.name}`} transform={`translate(${ix}, ${iy})`}>
-                          {iw > 72 && ih > 18 ? (
-                            <text
-                              x="3"
-                              y="10"
-                              fill="#ffffff"
-                              fontSize={clamp(Math.min(iw / 18, 9), 7, 9)}
-                              fontWeight="900"
-                              style={{ pointerEvents: 'none' }}
+                    return (
+                      <g key={`${sector.key}-${industry.name}`} transform={`translate(${ix}, ${iy})`}>
+                        {iw > 72 && ih > 18 ? (
+                          <text
+                            x="3"
+                            y="10"
+                            fill="#ffffff"
+                            fontSize={clamp(Math.min(iw / 18, 9), 7, 9)}
+                            fontWeight="900"
+                            style={{ pointerEvents: 'none' }}
+                          >
+                            {industry.name.toUpperCase()}
+                          </text>
+                        ) : null}
+
+                        {(industryNode.children ?? []).map((companyNode) => {
+                          const company = companyNode.data as CompanyNode
+                          const x = companyNode.x0 - industryNode.x0
+                          const y = companyNode.y0 - industryNode.y0
+                          const cw = companyNode.x1 - companyNode.x0
+                          const ch = companyNode.y1 - companyNode.y0
+                          const label = company.ticker || company.label || company.name
+                          const showPrimary = cw > 34 && ch > 16
+                          const metricText = formatMetricValue(company, viewMode)
+                          const showMetric = metricText !== null && cw > 58 && ch > 26
+                          const isActive =
+                            activeCompany?.ticker === company.ticker &&
+                            activeCompany?.industry === company.industry
+
+                          const tickerFontSize = fitFontSize(label, cw - 8, ch, {
+                            min: 8,
+                            max: 32,
+                            widthFactor: 1.15,
+                            heightFactor: 0.34,
+                            charFactor: 0.72,
+                          })
+                          const weightFontSize = fitFontSize(metricText ?? '', cw - 8, ch, {
+                            min: 8,
+                            max: 16,
+                            widthFactor: 1.05,
+                            heightFactor: 0.18,
+                            charFactor: 0.62,
+                          })
+                          const tickerY = 6 + tickerFontSize
+                          const weightY = tickerY + Math.max(10, weightFontSize + 4)
+
+                          return (
+                            <g
+                              key={`${sector.key}-${industry.name}-${company.ticker || company.name}`}
+                              transform={`translate(${x}, ${y})`}
+                              onMouseEnter={() => {
+                                setHoveredCompany(company)
+                              }}
+                              onMouseLeave={() => {
+                                setHoveredCompany((current) =>
+                                  current?.ticker === company.ticker ? null : current,
+                                )
+                                setTooltip(null)
+                              }}
+                              onMouseMove={(event) => {
+                                positionTooltip(event.clientX, event.clientY, company)
+                              }}
+                              style={{
+                                cursor: 'pointer',
+                                transition: 'transform 140ms ease, opacity 140ms ease',
+                              }}
                             >
-                              {industry.name.toUpperCase()}
-                            </text>
-                          ) : null}
-
-                          {(industryNode.children ?? []).map((companyNode) => {
-                            const company = companyNode.data as CompanyNode
-                            const x = companyNode.x0 - industryNode.x0
-                            const y = companyNode.y0 - industryNode.y0
-                            const cw = companyNode.x1 - companyNode.x0
-                            const ch = companyNode.y1 - companyNode.y0
-                            const label = company.ticker || company.label || company.name
-                            const showPrimary = cw > 34 && ch > 16
-                            const metricText = formatMetricValue(company, viewMode)
-                            const showMetric = metricText !== null && cw > 58 && ch > 26
-                            const isActive =
-                              activeCompany?.ticker === company.ticker &&
-                              activeCompany?.industry === company.industry
-
-                            const tickerFontSize = fitFontSize(label, cw - 8, ch, {
-                              min: 8,
-                              max: 32,
-                              widthFactor: 1.15,
-                              heightFactor: 0.34,
-                              charFactor: 0.72,
-                            })
-                            const weightFontSize = fitFontSize(metricText ?? '', cw - 8, ch, {
-                              min: 8,
-                              max: 16,
-                              widthFactor: 1.05,
-                              heightFactor: 0.18,
-                              charFactor: 0.62,
-                            })
-                            const tickerY = 6 + tickerFontSize
-                            const weightY = tickerY + Math.max(10, weightFontSize + 4)
-
-                            return (
-                              <g
-                                key={`${sector.key}-${industry.name}-${company.ticker || company.name}`}
-                                transform={`translate(${x}, ${y})`}
-                                onMouseEnter={() => {
-                                  setHoveredCompany(company)
+                              <rect
+                                x="0"
+                                y="0"
+                                width={cw}
+                                height={ch}
+                                fill={getPerformanceColor(getMetricValue(company, viewMode), sector.color, viewMode)}
+                                stroke={
+                                  isActive
+                                    ? 'rgba(255,255,255,0.85)'
+                                    : 'rgba(0,0,0,0.20)'
+                                }
+                                strokeWidth={isActive ? 2 : 1}
+                                opacity={activeCompany && !isActive ? 0.78 : 1}
+                                style={{
+                                  transition:
+                                    'stroke 140ms ease, opacity 140ms ease, transform 140ms ease',
                                 }}
-                                onMouseLeave={() => {
-                                  setHoveredCompany((current) =>
-                                    current?.ticker === company.ticker ? null : current,
-                                  )
-                                  setTooltip(null)
-                                }}
-                                onMouseMove={(event) => {
-                                  positionTooltip(event.clientX, event.clientY, company)
-                                }}
-                          style={{
-                            cursor: 'pointer',
-                            transition: 'transform 140ms ease, opacity 140ms ease',
-                                }}
-                              >
-                                <rect
-                                  x="0"
-                                  y="0"
-                                  width={cw}
-                                  height={ch}
-                                  fill={getPerformanceColor(getMetricValue(company, viewMode), sector.color, viewMode)}
-                                  stroke={
-                                    isActive
-                                      ? 'rgba(255,255,255,0.85)'
-                                      : 'rgba(0,0,0,0.20)'
-                                  }
-                                  strokeWidth={isActive ? 2 : 1}
-                                  opacity={activeCompany && !isActive ? 0.78 : 1}
-                                  style={{
-                                    transition:
-                                      'stroke 140ms ease, opacity 140ms ease, transform 140ms ease',
-                                  }}
-                                />
+                              />
 
-                                {showPrimary ? (
-                                  <text
-                                    x="3"
-                                    y={tickerY}
-                                    fill="#111111"
-                                    fontSize={tickerFontSize}
-                                    fontWeight="900"
-                                    style={{ pointerEvents: 'none' }}
-                                  >
-                                    {label}
-                                  </text>
-                                ) : null}
+                              {showPrimary ? (
+                                <text
+                                  x="3"
+                                  y={tickerY}
+                                  fill="#111111"
+                                  fontSize={tickerFontSize}
+                                  fontWeight="900"
+                                  style={{ pointerEvents: 'none' }}
+                                >
+                                  {label}
+                                </text>
+                              ) : null}
 
-                                {showMetric ? (
-                                  <text
-                                    x="4"
-                                    y={weightY}
-                                    fill="#111111"
-                                    fontSize={weightFontSize}
-                                    fontWeight="800"
-                                    style={{ pointerEvents: 'none' }}
-                                  >
-                                    {metricText}
-                                  </text>
-                                ) : null}
-
-                              </g>
-                            )
-                          })}
-                        </g>
-                      )
-                    })}
-                  </g>
-                )
-              })}
+                              {showMetric ? (
+                                <text
+                                  x="4"
+                                  y={weightY}
+                                  fill="#111111"
+                                  fontSize={weightFontSize}
+                                  fontWeight="800"
+                                  style={{ pointerEvents: 'none' }}
+                                >
+                                  {metricText}
+                                </text>
+                              ) : null}
+                            </g>
+                          )
+                        })}
+                      </g>
+                    )
+                  })}
+                </g>
+              )
+            })}
           </g>
         </svg>
 
