@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { toBlob } from 'html-to-image'
 import MarketMapPro from './components/MarketMapPro'
-import type { Locale, Payload, ViewMode } from './types'
+import SectorReturnsChart from './components/SectorReturnsChart'
+import type { Locale, Payload, SectorReturnsPayload, ViewMode } from './types'
 
 type ReturnMode = Exclude<ViewMode, 'weight'>
 
@@ -75,7 +76,7 @@ function mathFormula(kind: 'index' | 'weight' | 'return'): ReactNode {
 
 const copy = {
   en: {
-    fallbackTitle: 'What Is the S&P 500 and What Does It Really Tell You About the Market?',
+    fallbackTitle: 'What Does the S&P 500 Really Tell You?',
     byline: 'by Sebastian Becerra',
     introParagraph:
       'The S&P 500 is one of the most widely used equity indices in the world and serves as the main benchmark for tracking the U.S. stock market. In broad terms, it groups 500 large companies listed on exchanges such as the NYSE and Nasdaq, and its evolution is often interpreted as a proxy for overall market performance.',
@@ -98,6 +99,17 @@ const copy = {
       'Color now reflects return: green is positive, red is negative, and darker tones are closer to zero.',
       'Use 1D, YTD, 1Y, 5Y, and 10Y to switch the return horizon without changing company size.',
     ],
+    sectorSeriesTitle: 'Sector Return Time Series: Methodology and Interpretation',
+    sectorSeriesParagraphs: [
+      'The sector chart answers a different question than the treemap. Instead of showing the cross-section of the index at one point in time, it follows the path of each sector through time. Each line represents a chained return series built from the companies that currently belong to that sector in the public replica dataset.',
+      'The daily sector return is computed as a weighted average of daily constituent returns, using the current company weights available in the project data. Those daily sector returns are then chained into an index-like series and rebased to 100 at the start of the selected window. That means the y-axis is not a raw percent scale. It is a normalized index level whose starting point is always 100 for the visible period.',
+      'This also means the chart is designed for comparison of paths rather than direct comparison with an official S&P sector total return series. The methodology is transparent and reproducible, but it uses the current constituent set and current weights as the analytical base.',
+    ],
+    sectorSeriesFormulaTitle: 'Sector Return Formula',
+    sectorSeriesFormulaNote:
+      'The first expression computes the daily sector return as the weighted average of daily company returns inside that sector. The second expression chains those daily returns and rebases the visible window to 100 at its starting date.',
+    sectorSeriesXAxisNote:
+      'The x-axis is calendar time. The y-axis is a rebased sector index level, so 100 always marks the beginning of the selected window.',
     leadTitle: 'The S&P 500 Is Not 500 Equal Stocks',
     leadParagraphs: [
       'The S&P 500 is a market-cap-weighted index. That means the biggest companies carry the biggest influence. Apple, Microsoft, Nvidia, Amazon, and other mega-caps occupy far more of the index than smaller constituents, so a move in a handful of giant firms can drive a large share of the benchmark.',
@@ -179,7 +191,7 @@ const copy = {
     ],
   },
   es: {
-    fallbackTitle: '¿Qué es el S&P 500 y qué te dice realmente sobre el mercado?',
+    fallbackTitle: '¿Qué te dice realmente el S&P 500?',
     byline: 'by Sebastian Becerra',
     introParagraph:
       'El S&P 500 es uno de los índices bursátiles más utilizados a nivel global y funciona como la principal referencia para seguir el mercado accionario estadounidense. En términos generales, agrupa a 500 grandes compañías que cotizan en bolsas como NYSE y Nasdaq, y su evolución suele interpretarse como un reflejo del desempeño del mercado.',
@@ -202,6 +214,17 @@ const copy = {
       'El color ahora muestra retorno: verde es positivo, rojo es negativo y los tonos más oscuros quedan más cerca de cero.',
       'Usa 1D, YTD, 1Y, 5Y y 10Y para cambiar el horizonte de retorno sin cambiar el tamaño de las empresas.',
     ],
+    sectorSeriesTitle: 'Serie de Tiempo de Retornos por Sector: metodología e interpretación',
+    sectorSeriesParagraphs: [
+      'El gráfico sectorial responde una pregunta distinta al treemap. En lugar de mostrar la foto transversal del índice en un momento puntual, sigue la trayectoria de cada sector en el tiempo. Cada línea representa una serie encadenada de retornos construida a partir de las empresas que hoy pertenecen a ese sector dentro del dataset público de réplica.',
+      'El retorno diario sectorial se calcula como un promedio ponderado de los retornos diarios de sus constituyentes, usando los pesos actuales de las empresas disponibles en la data del proyecto. Luego esos retornos diarios se encadenan en una serie tipo índice y se rebasean a 100 al inicio de la ventana seleccionada. Por eso el eje vertical no es un porcentaje bruto: es un nivel normalizado cuyo punto de partida siempre es 100 dentro del tramo visible.',
+      'Eso también implica que el gráfico está pensado para comparar trayectorias más que para replicar exactamente una serie oficial de total return sectorial de S&P. La metodología es transparente y reproducible, pero usa como base analítica el conjunto actual de empresas y los pesos actuales.',
+    ],
+    sectorSeriesFormulaTitle: 'Fórmulas del retorno sectorial',
+    sectorSeriesFormulaNote:
+      'La primera expresión calcula el retorno diario del sector como promedio ponderado de los retornos diarios de sus empresas. La segunda encadena esos retornos diarios y rebasea la ventana visible a 100 en la fecha inicial.',
+    sectorSeriesXAxisNote:
+      'El eje X es tiempo calendario. El eje Y es un nivel sectorial rebaseado, por eso el 100 siempre marca el inicio de la ventana seleccionada.',
     sections: [
       {
         title: 'Qué hace distinto a este market map',
@@ -294,6 +317,7 @@ function formatDate(date: string, locale: Locale) {
 export default function App() {
   const [locale, setLocale] = useState<Locale>('en')
   const [data, setData] = useState<Payload | null>(null)
+  const [sectorReturnsData, setSectorReturnsData] = useState<SectorReturnsPayload | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [returnViewMode, setReturnViewMode] = useState<ReturnMode>('1d')
   const cardRef = useRef<HTMLElement | null>(null)
@@ -311,6 +335,11 @@ export default function App() {
         if (!response.ok) throw new Error(`HTTP ${response.status}`)
         const payload = (await response.json()) as Payload
         setData(payload)
+        const sectorReturnsResponse = await fetch(withBaseUrl('data/sp500-sector-returns.json'))
+        if (sectorReturnsResponse.ok) {
+          const sectorReturnsPayload = (await sectorReturnsResponse.json()) as SectorReturnsPayload
+          setSectorReturnsData(sectorReturnsPayload)
+        }
         const availableModes = payload.availableModes ?? ['weight']
         const availableReturnModes = availableModes.filter(
           (mode): mode is ReturnMode => mode !== 'weight',
@@ -488,7 +517,79 @@ export default function App() {
               }}
             />
           </div>
+          <div className="footer-note">
+            <div>
+              <strong>{labels.note}:</strong>{' '}
+              {locale === 'es'
+                ? 'En este segundo gráfico el tamaño sigue mostrando el peso de cada empresa dentro del índice, mientras el color muestra el retorno individual para el horizonte seleccionado.'
+                : 'In this second chart, box size still shows each company’s weight in the index, while color shows the individual return for the selected horizon.'}
+            </div>
+            <div><strong>{labels.source}:</strong> <a href={data.source.url} target="_blank" rel="noreferrer">{data.source.name}</a></div>
+            <div><strong>{labels.updated}:</strong> {formatDate(data.generatedAt, locale)}</div>
+          </div>
         </section>
+      ) : null}
+
+      {sectorReturnsData ? (
+        <>
+          <section className="panel article-card">
+            <section className="article-section">
+              <h3>{labels.sectorSeriesTitle}</h3>
+              {labels.sectorSeriesParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+              <div className="formula-block">
+                <div className="formula-expression">
+                  <span className="math-var">r</span>
+                  <sub>sector,t</sub>
+                  {' = '}
+                  <span className="math-frac">
+                    <span className="math-num">
+                      ∑
+                      <span className="math-var">w</span>
+                      <sub>i</sub>
+                      <span className="math-var">r</span>
+                      <sub>i,t</sub>
+                    </span>
+                    <span className="math-den">
+                      ∑
+                      <span className="math-var">w</span>
+                      <sub>i</sub>
+                    </span>
+                  </span>
+                  {'   ·   '}
+                  <span className="math-var">Index</span>
+                  <sub>sector,t</sub>
+                  {' = 100 × ∏(1 + '}
+                  <span className="math-var">r</span>
+                  <sub>sector,τ</sub>
+                  {')'}
+                </div>
+                <div className="formula-note">{labels.sectorSeriesFormulaNote}</div>
+              </div>
+              <p>{labels.sectorSeriesXAxisNote}</p>
+            </section>
+          </section>
+
+          <section className="panel chart-card">
+            <SectorReturnsChart data={sectorReturnsData} locale={locale} />
+            <div className="footer-note">
+              <div>
+                <strong>{labels.note}:</strong>{' '}
+                {locale === 'es'
+                  ? 'La serie sectorial encadena retornos diarios ponderados de los constituyentes actuales y rebasea cada ventana a 100. No corresponde a una serie oficial point-in-time de S&P.'
+                  : 'The sector series chains weighted daily returns of current constituents and rebases each window to 100. It is not an official point-in-time S&P sector return series.'}
+              </div>
+              <div>
+                <strong>{labels.source}:</strong>{' '}
+                <a href={data?.source.url ?? '#'} target="_blank" rel="noreferrer">{data?.source.name ?? sectorReturnsData.source.weights}</a>
+                {' · '}
+                <span>{sectorReturnsData.source.prices}</span>
+              </div>
+              <div><strong>{labels.updated}:</strong> {formatDate(sectorReturnsData.generatedAt, locale)}</div>
+            </div>
+          </section>
+        </>
       ) : null}
 
       <section className="panel article-card">

@@ -6,7 +6,7 @@
   "scripts": {
     "extract:wikipedia": "node ./scripts/extract-wikipedia.mjs",
     "extract:yahoo": "node ./scripts/extract-yahoo-quotes.mjs",
-    "build:data": "node ./scripts/build-data.mjs",
+    "build:data": "node ./scripts/build-data.mjs && node ./scripts/build-sector-returns.mjs",
     "build:pages": "node ./scripts/build-pages.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build",

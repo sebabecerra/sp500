@@ -38,3 +38,28 @@ export type Payload = {
   availableModes?: ViewMode[]
   sectors: Sector[]
 }
+
+export type SectorReturnPoint = {
+  date: string
+  value: number
+  coverage: number
+}
+
+export type SectorReturnSeries = {
+  key: string
+  name: { en: string; es: string }
+  color: string
+  weight: number
+  companies: number
+  series: SectorReturnPoint[]
+}
+
+export type SectorReturnsPayload = {
+  generatedAt: string
+  source: {
+    weights: string
+    prices: string
+  }
+  note: string
+  sectors: SectorReturnSeries[]
+}
