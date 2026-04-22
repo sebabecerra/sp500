@@ -1,0 +1,411 @@
+:root {
+  color-scheme: dark;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #000;
+  color: #f2f2f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #000;
+}
+
+a {
+  color: inherit;
+}
+
+.app-shell {
+  width: min(1240px, calc(100vw - 24px));
+  margin: 10px auto 20px;
+  display: grid;
+  gap: 10px;
+}
+
+.poster-shell {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px;
+  overflow: auto;
+  background: #000;
+}
+
+.panel {
+  background: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+.status-card {
+  padding: 14px 16px;
+  color: rgba(241, 236, 224, 0.9);
+}
+
+.poster-card {
+  padding: 10px;
+  overflow: hidden;
+}
+
+.poster-card-plain {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  width: auto;
+  display: block;
+}
+
+.poster-card svg {
+  width: min(1600px, calc(100vw - 32px));
+  height: auto;
+  display: block;
+  border-radius: 0;
+}
+
+.histogram-svg {
+  max-width: 100%;
+}
+
+.year {
+  font-size: 24px;
+  font-weight: 900;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+}
+
+.axis text {
+  font-size: 34px;
+  font-weight: 500;
+  fill: #efe5bf;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.chart-title {
+  font-size: 54px;
+  font-weight: 600;
+  fill: #ff5b32;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.panel-title {
+  font-size: 28px;
+  font-weight: 600;
+  fill: #efe5bf;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.scatter-label {
+  font-size: 18px;
+  font-weight: 700;
+  fill: #f5f0d6;
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+}
+
+.scatter-page {
+  color: #efe5bf;
+}
+
+.chart-title-html {
+  margin: 0 0 10px;
+  font-size: 54px;
+  font-weight: 600;
+  color: #ff5b32;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.panel-title-html {
+  margin: 0 0 28px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #efe5bf;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.scatter-wrap {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: start;
+  column-gap: 18px;
+}
+
+.scatter-shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scatter-box {
+  position: relative;
+  border: 1px solid rgba(245, 240, 214, 0.35);
+  border-radius: 12px;
+}
+
+.scatter-grid-v,
+.scatter-grid-h {
+  position: absolute;
+  background: rgba(245, 240, 214, 0.12);
+}
+
+.scatter-grid-v {
+  top: 0;
+  bottom: 0;
+  width: 1px;
+}
+
+.scatter-grid-h {
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+.scatter-point-wrap {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.scatter-point {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 1.2px solid rgba(245, 240, 214, 0.25);
+}
+
+.scatter-point.highlighted {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid #f5f0d6;
+}
+
+.scatter-point-label {
+  position: absolute;
+  left: 14px;
+  top: -10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #f5f0d6;
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+  white-space: nowrap;
+}
+
+.scatter-x-ticks {
+  position: relative;
+  height: 48px;
+}
+
+.scatter-y-ticks {
+  position: relative;
+  width: 64px;
+}
+
+.axis-label-html {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 26px;
+  font-weight: 500;
+  color: #efe5bf;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.axis-label-html.y {
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.x-axis-title,
+.y-axis-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #efe5bf;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.x-axis-title {
+  margin-top: 8px;
+}
+
+.y-axis-title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  align-self: center;
+}
+
+.panel-title {
+  font-size: 34px;
+  font-weight: 600;
+  fill: #efe5bf;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.scatter-label {
+  font-size: 20px;
+  font-weight: 700;
+  fill: #f5f0d6;
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+}
+
+.quote-mark {
+  font-size: 58px;
+  font-weight: 800;
+  fill: #ff5b32;
+}
+
+.body-copy {
+  font-size: 23px;
+  fill: #f1ece0;
+}
+
+.body-copy tspan {
+  dominant-baseline: hanging;
+}
+
+.accent-copy {
+  font-size: 20px;
+  fill: #db6f51;
+}
+
+.title {
+  font-size: 58px;
+  line-height: 1.04;
+  font-weight: 500;
+  fill: #ff5b32;
+}
+
+.callout-title {
+  font-size: 34px;
+  fill: #4fc8bd;
+  font-weight: 500;
+}
+
+.callout-body {
+  font-size: 22px;
+  fill: #f1ece0;
+}
+
+.dashed {
+  fill: none;
+  stroke: #f1ece0;
+  stroke-width: 4;
+  stroke-dasharray: 6 10;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.95;
+}
+
+.badge {
+  fill: #151718;
+  stroke: rgba(255, 255, 255, 0.04);
+}
+
+.source {
+  font-size: 14px;
+  fill: rgba(148, 184, 170, 0.72);
+}
+
+.brand-title {
+  font-size: 28px;
+  font-weight: 700;
+  fill: #efe5bf;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.hero-years {
+  font-size: 84px;
+  font-weight: 500;
+  fill: #7da38f;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.hero-title {
+  font-size: 90px;
+  font-weight: 500;
+  fill: #f5e5ab;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.lede-copy {
+  font-size: 28px;
+  fill: #e8deb7;
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+}
+
+.lede-emphasis {
+  font-weight: 800;
+}
+
+.callout-header {
+  font-size: 34px;
+  fill: #7da38f;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.callout-copy {
+  font-size: 26px;
+  fill: #efe5bf;
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+}
+
+.quote-mark-green,
+.quote-mark-coral {
+  font-size: 78px;
+  font-weight: 800;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.quote-mark-green {
+  fill: #7ab29d;
+}
+
+.quote-mark-coral {
+  fill: #ed7a62;
+}
+
+.quote-copy {
+  font-size: 24px;
+  fill: #efe5bf;
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+}
+
+.quote-attrib-green,
+.quote-attrib-coral {
+  font-size: 24px;
+  font-family: "Avenir Next", "Trebuchet MS", sans-serif;
+}
+
+.quote-attrib-green {
+  fill: #7da38f;
+}
+
+.quote-attrib-coral {
+  fill: #ed7a62;
+}
+
+.curve-arrow {
+  fill: none;
+  stroke: #d7d0ae;
+  stroke-width: 2.4;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    width: min(100vw, calc(100vw - 12px));
+    margin: 6px auto 12px;
+  }
+
+  .poster-card-plain {
+    padding: 0;
+  }
+}
