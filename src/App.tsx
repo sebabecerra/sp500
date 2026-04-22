@@ -6,6 +6,13 @@ import type { Locale, Payload, SectorReturnsPayload, ViewMode } from './types'
 
 type ReturnMode = Exclude<ViewMode, 'weight'>
 
+const siblingLinks = [
+  { href: '../market-map/', label: 'Market Map' },
+  { href: '../histogram/', label: 'Histogram' },
+  { href: '../risk-indicator/', label: 'Risk Indicator' },
+  { href: '../index-forecast/', label: 'Index Forecast' },
+]
+
 function mathFormula(kind: 'index' | 'weight' | 'return'): ReactNode {
   if (kind === 'index') {
     return (
@@ -384,6 +391,18 @@ export default function App() {
 
   return (
     <main className="app-shell">
+      <nav className="project-nav" aria-label="S&P 500 project navigation">
+        {siblingLinks.map((link) => (
+          <a
+            key={link.href}
+            className={`project-nav-link${link.href === '../market-map/' ? ' active' : ''}`}
+            href={link.href}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
       <section className="panel intro-card">
         <div className="topbar">
           <div>

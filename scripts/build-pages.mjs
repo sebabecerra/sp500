@@ -6,6 +6,9 @@ import { spawnSync } from 'node:child_process'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const rootDir = resolve(__dirname, '..')
 const compositionDir = resolve(rootDir, 'composition')
+const histogramDir = resolve(rootDir, 'histogram')
+const riskIndicatorDir = resolve(rootDir, 'risk-indicator')
+const indexForecastDir = resolve(rootDir, 'index-forecast')
 const distDir = resolve(rootDir, 'dist')
 
 function run(command, args, cwd) {
@@ -27,5 +30,14 @@ run('npm', ['run', 'build', '--', '--outDir', 'dist/market-map'], rootDir)
 
 run('npm', ['run', 'build:data'], compositionDir)
 run('npm', ['run', 'build', '--', '--outDir', '../dist/composition'], compositionDir)
+
+run('npm', ['run', 'build:data'], histogramDir)
+run('npm', ['run', 'build', '--', '--outDir', '../dist/histogram'], histogramDir)
+
+run('npm', ['run', 'build:data'], riskIndicatorDir)
+run('npm', ['run', 'build', '--', '--outDir', '../dist/risk-indicator'], riskIndicatorDir)
+
+run('npm', ['run', 'build:data'], indexForecastDir)
+run('npm', ['run', 'build', '--', '--outDir', '../dist/index-forecast'], indexForecastDir)
 
 copyFileSync(resolve(rootDir, 'pages', 'index.html'), resolve(distDir, 'index.html'))

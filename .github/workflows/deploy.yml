@@ -37,6 +37,15 @@ jobs:
       - name: Install composition dependencies
         run: npm -C composition ci
 
+      - name: Install histogram dependencies
+        run: npm -C histogram ci
+
+      - name: Install risk-indicator dependencies
+        run: npm -C risk-indicator ci
+
+      - name: Install index-forecast dependencies
+        run: npm -C index-forecast ci
+
       - name: Build all pages
         run: npm run build:pages
 

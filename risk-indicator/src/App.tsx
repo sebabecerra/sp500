@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 import { RiskIndicatorChart } from "./charts/risk-indicator/App";
 import type { AnnualReturnsPayload } from "./types";
 
+const siblingLinks = [
+  { href: "../market-map/", label: "Market Map" },
+  { href: "../histogram/", label: "Histogram" },
+  { href: "../risk-indicator/", label: "Risk Indicator" },
+  { href: "../index-forecast/", label: "Index Forecast" },
+];
+
 function withBaseUrl(path: string) {
   const base = import.meta.env.BASE_URL.endsWith("/")
     ? import.meta.env.BASE_URL
@@ -45,5 +52,16 @@ export default function App() {
     );
   }
 
-  return <RiskIndicatorChart data={data} />;
+  return (
+    <>
+      <nav className="project-nav" aria-label="S&P 500 project navigation">
+        {siblingLinks.map((link) => (
+          <a key={link.href} className={`project-nav-link${link.href === "../risk-indicator/" ? " active" : ""}`} href={link.href}>
+            {link.label}
+          </a>
+        ))}
+      </nav>
+      <RiskIndicatorChart data={data} />
+    </>
+  );
 }

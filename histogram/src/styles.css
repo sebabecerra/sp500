@@ -24,6 +24,36 @@ a {
   color: inherit;
 }
 
+.project-nav {
+  width: min(1240px, calc(100vw - 24px));
+  margin: 14px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(239, 229, 191, 0.28);
+  background: rgba(239, 229, 191, 0.06);
+  color: rgba(245, 240, 214, 0.86);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.project-nav-link.active {
+  background: #efe5bf;
+  border-color: #efe5bf;
+  color: #050505;
+}
+
 .app-shell {
   width: min(1240px, calc(100vw - 24px));
   margin: 10px auto 20px;
