@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-22T20:24:56.119Z",
+  "generatedAt": "2026-04-22T21:48:16.370Z",
   "sourceName": "Official Data + FRED SP500 + FRED VIXCLS",
   "sourceUrl": "https://www.officialdata.org/us/stocks/s-p-500/1871 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=SP500 | https://fred.stlouisfed.org/graph/fredgraph.csv?id=VIXCLS",
   "methodology": "Annual return is computed from December-to-December changes in the source's cumulative S&P 500 total-return value series. The risk indicator uses daily VIX close from FRED series VIXCLS and calculates a 50-day moving-average deviation score as (VIX - MA50) / rolling 50-day standard deviation. Fear and complacency bands are the 90th and 10th percentiles of the score over the displayed window.",
