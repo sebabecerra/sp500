@@ -6,18 +6,19 @@ import { sectorConfig } from './lib/data-sources.mjs'
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const root = resolve(scriptDir, '..')
-const outputDir = resolve(root, 'public/data')
+const marketMapDir = resolve(root, 'market-map')
+const outputDir = resolve(marketMapDir, 'public/data')
 
 const weightsCandidates = [
-  resolve(root, 'data/manual/notebook/sp500_market_map_returns.csv'),
-  resolve(root, 'data/manual/sp500_market_map_returns.csv'),
-  resolve(root, 'data/manual/notebook/sp500_market_map_replica.csv'),
-  resolve(root, 'data/manual/sp500_market_map_replica.csv'),
+  resolve(root, 'sources/manual/notebook/sp500_market_map_returns.csv'),
+  resolve(root, 'sources/manual/sp500_market_map_returns.csv'),
+  resolve(root, 'sources/manual/notebook/sp500_market_map_replica.csv'),
+  resolve(root, 'sources/manual/sp500_market_map_replica.csv'),
 ]
 
 const wideCandidates = [
-  resolve(root, 'data/manual/notebook/sp500_timeseries_15y_wide.csv'),
-  resolve(root, 'data/manual/sp500_timeseries_15y_wide.csv'),
+  resolve(root, 'sources/manual/notebook/sp500_timeseries_15y_wide.csv'),
+  resolve(root, 'sources/manual/sp500_timeseries_15y_wide.csv'),
 ]
 
 async function readFirstExisting(paths) {
@@ -187,5 +188,5 @@ await mkdir(outputDir, { recursive: true })
 await writeFile(resolve(outputDir, 'sp500-sector-returns.json'), JSON.stringify(payload, null, 2), 'utf8')
 
 console.log(
-  `Saved public/data/sp500-sector-returns.json with ${payload.sectors.length} sectors from ${weightsPath} and ${widePath}`,
+  `Saved market-map/public/data/sp500-sector-returns.json with ${payload.sectors.length} sectors from ${weightsPath} and ${widePath}`,
 )

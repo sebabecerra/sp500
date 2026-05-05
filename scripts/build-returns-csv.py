@@ -11,10 +11,11 @@ import pandas as pd
 import yfinance as yf
 
 
-ROOT = Path("/Users/sbc/projects/Plots/sp500/market-map")
-WEIGHTS_CSV = ROOT / "data/manual/notebook/sp500_companies_wiki_yfinance.csv"
-WIKI_JSON = ROOT / "data/extracted/wikipedia/constituents.json"
-OUTPUT_CSV = ROOT / "data/manual/notebook/sp500_market_map_returns.csv"
+ROOT = Path(__file__).resolve().parent.parent
+WEIGHTS_CSV = ROOT / "sources/manual/notebook/sp500_companies_wiki_yfinance.csv"
+WIKI_JSON = ROOT / "sources/extracted/wikipedia/constituents.json"
+TIMESERIES_WIDE_CSV = ROOT / "sources/manual/notebook/sp500_timeseries_15y_wide.csv"
+OUTPUT_CSV = ROOT / "sources/manual/notebook/sp500_market_map_returns.csv"
 
 NAME_OVERRIDES = {
     "marsh and mclennan": "MRSH",
@@ -145,6 +146,18 @@ def fetch_histories(tickers: list[str]) -> dict[str, pd.Series]:
     return histories
 
 
+def load_local_histories(tickers: list[str]) -> dict[str, pd.Series]:
+    if not TIMESERIES_WIDE_CSV.exists():
+        return {}
+
+    frame = pd.read_csv(TIMESERIES_WIDE_CSV, index_col=0, parse_dates=True)
+    histories: dict[str, pd.Series] = {}
+    for ticker in tickers:
+        if ticker in frame.columns:
+            histories[ticker] = frame[ticker].dropna()
+    return histories
+
+
 def fetch_missing_history(ticker: str) -> pd.Series:
     try:
         history = yf.Ticker(ticker).history(period="10y", interval="1d", auto_adjust=True)
@@ -176,7 +189,10 @@ def main() -> None:
         )
 
     tickers = sorted({row["ticker"] for row in resolved_rows if row["ticker"]})
-    histories = fetch_histories(tickers)
+    histories = load_local_histories(tickers)
+    missing_for_download = [ticker for ticker in tickers if ticker not in histories]
+    if missing_for_download:
+        histories.update(fetch_histories(missing_for_download))
 
     missing_tickers = [ticker for ticker, series in histories.items() if series.empty]
     for ticker in missing_tickers:

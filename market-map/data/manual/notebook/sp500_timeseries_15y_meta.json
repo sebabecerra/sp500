@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-05-04T22:29:39.775452+00:00",
+  "source": "Current S&P 500 constituents from Wikipedia",
+  "sourceUrl": "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies",
+  "tickersRequested": 503,
+  "tickersReturned": 503,
+  "missingTickers": [],
+  "dateStart": "2011-05-05",
+  "dateEnd": "2026-05-04",
+  "rowsWide": 3771,
+  "columnsWide": 503,
+  "rowsLong": 1801326,
+  "usedPreviousFallback": false
+}

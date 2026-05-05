@@ -7,7 +7,7 @@ import { csvParse } from 'd3-dsv'
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const root = resolve(scriptDir, '..')
 const outputDir = resolve(root, 'public/data')
-const rawDir = resolve(root, 'data/raw')
+const rawDir = resolve(root, '../sources/raw')
 const visualCapitalistHtmlPath = resolve(rawDir, 'visualcapitalist-sp500-2026.html')
 const visualCapitalistFragmentPrefix = 'visualcapitalist-sp500-2026-'
 

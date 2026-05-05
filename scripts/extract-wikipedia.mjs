@@ -9,7 +9,7 @@ import {
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const root = resolve(scriptDir, '..')
-const wikipediaDir = resolve(root, 'data/extracted/wikipedia')
+const wikipediaDir = resolve(root, 'sources/extracted/wikipedia')
 
 const html = downloadText(WIKIPEDIA_SP500_URL)
 const rows = parseWikipediaRows(html)

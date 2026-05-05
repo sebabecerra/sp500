@@ -6,14 +6,15 @@ import { cleanCompanyName, formatTrillions, isFinitePositive, sectorConfig } fro
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const root = resolve(scriptDir, '..')
-const outputDir = resolve(root, 'public/data')
-const rawOutputDir = resolve(root, 'public/raw')
+const marketMapDir = resolve(root, 'market-map')
+const outputDir = resolve(marketMapDir, 'public/data')
+const rawOutputDir = resolve(marketMapDir, 'public/raw')
 
 const csvCandidates = [
-  resolve(root, 'data/manual/notebook/sp500_market_map_returns.csv'),
-  resolve(root, 'data/manual/sp500_market_map_returns.csv'),
-  resolve(root, 'data/manual/notebook/sp500_companies_wiki_yfinance.csv'),
-  resolve(root, 'data/manual/sp500_companies_wiki_yfinance.csv'),
+  resolve(root, 'sources/manual/notebook/sp500_market_map_returns.csv'),
+  resolve(root, 'sources/manual/sp500_market_map_returns.csv'),
+  resolve(root, 'sources/manual/notebook/sp500_companies_wiki_yfinance.csv'),
+  resolve(root, 'sources/manual/sp500_companies_wiki_yfinance.csv'),
 ]
 
 async function readFirstExisting(paths) {
@@ -189,5 +190,5 @@ await copyFile(csvPath, resolve(rawOutputDir, csvPath.split('/').pop()))
 await writeFile(resolve(outputDir, 'sp500-market-map.json'), JSON.stringify(payload, null, 2), 'utf8')
 
 console.log(
-  `Saved public/data/sp500-market-map.json with ${payload.sectors.length} sectors and ${payload.sectors.reduce((sum, sector) => sum + sector.companies, 0)} companies from ${csvPath}`,
+  `Saved market-map/public/data/sp500-market-map.json with ${payload.sectors.length} sectors and ${payload.sectors.reduce((sum, sector) => sum + sector.companies, 0)} companies from ${csvPath}`,
 )

@@ -10,8 +10,8 @@ import {
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const root = resolve(scriptDir, '..')
-const wikipediaDir = resolve(root, 'data/extracted/wikipedia')
-const yahooDir = resolve(root, 'data/extracted/yahoo')
+const wikipediaDir = resolve(root, 'sources/extracted/wikipedia')
+const yahooDir = resolve(root, 'sources/extracted/yahoo')
 
 function fetchYahooQuotesBatch(symbols) {
   const url = `${YAHOO_QUOTE_URL}${encodeURIComponent(symbols.join(','))}`

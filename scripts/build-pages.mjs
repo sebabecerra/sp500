@@ -5,6 +5,7 @@ import { spawnSync } from 'node:child_process'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const rootDir = resolve(__dirname, '..')
+const marketMapDir = resolve(rootDir, 'market-map')
 const compositionDir = resolve(rootDir, 'composition')
 const datasetsDir = resolve(rootDir, 'datasets')
 const histogramDir = resolve(rootDir, 'histogram')
@@ -26,8 +27,8 @@ function run(command, args, cwd) {
 rmSync(distDir, { recursive: true, force: true })
 mkdirSync(distDir, { recursive: true })
 
-run('npm', ['run', 'build:data'], rootDir)
-run('npm', ['run', 'build', '--', '--outDir', 'dist/market-map'], rootDir)
+run('npm', ['run', 'build:data'], marketMapDir)
+run('npm', ['run', 'build', '--', '--outDir', '../dist/market-map'], marketMapDir)
 
 run('npm', ['run', 'build:data'], compositionDir)
 run('npm', ['run', 'build', '--', '--outDir', '../dist/composition'], compositionDir)
